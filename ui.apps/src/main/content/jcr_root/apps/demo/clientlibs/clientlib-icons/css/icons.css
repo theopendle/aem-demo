@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'card-suits';
+    src: url('../fonts/card-suits.ttf?262ep1') format('truetype'),
+    url('../fonts/card-suits.woff?262ep1') format('woff'),
+    url('../fonts/card-suits.svg?262ep1#card-suits') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="coral3-Icon--custom_"], [class*=" coral3-Icon--custom_"] {
+    /* Use !important to prevent Coral iverwriting the font-family */
+    font-family: 'card-suits' !important;
+}
+
+.coral3-Icon--custom_spades:before {
+    content: "\e917";
+}
+
+.coral3-Icon--custom_clubs:before {
+    content: "\e918";
+}
+
+.coral3-Icon--custom_diamonds:before {
+    content: "\e919";
+}
+
+.coral3-Icon--custom_hearts:before {
+    content: "\e9da";
+}
