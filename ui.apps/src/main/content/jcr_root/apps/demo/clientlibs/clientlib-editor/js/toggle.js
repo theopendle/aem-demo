@@ -1,7 +1,7 @@
 (function (document, $) {
     "use strict";
 
-    var TOGGLE_ATTRIBUTE_PREFIX = "data-toggle-"
+    var TOGGLE_ATTRIBUTE_PREFIX = "data-toggle-";
     var MASTER_ATTRIBUTE_SUFFIX = "_master";
     var SLAVE_ATTRIBUTE_SUFFIX = "_slave";
     var DIALOG_CONTENT_SELECTOR = ".cq-dialog-content";
@@ -9,7 +9,7 @@
 
     /**
      * Build the master and slave attribute names from the toggle name.
-     * @param {string} toggleName 
+     * @param {string} toggleName
      */
     function getAttributes(toggleName) {
         return {
@@ -20,7 +20,7 @@
 
     /**
      * Builds the master and slave selectors from the toggle name.
-     * @param {string} toggleName 
+     * @param {string} toggleName
      */
     function getSelectors(toggleName) {
         var attributes = getAttributes(toggleName);
@@ -32,16 +32,16 @@
 
     var toggles = [
         {
-            name: "textfields",
+            name: "checkbox",
             updateFunction: function (master, $slaves) {
                 var isChecked = master[0].hasAttribute("checked");
                 $slaves.each(function () {
-                    $(this).prop("disabled", isChecked.toString() == $(this).attr(getAttributes("textfields").slave));
+                    $(this).prop("disabled", isChecked.toString() === $(this).attr(getAttributes("checkbox").slave));
                 })
             }
         },
         {
-            name: "select",
+            name: "textfield",
             updateFunction: function (master, $slaves) {
                 var show = master[0].value === "show secret";
                 $slaves.each(function () {
@@ -49,7 +49,7 @@
                 })
             }
         }
-    ]
+    ];
 
     toggles.forEach(function (toggle) {
 
@@ -66,7 +66,7 @@
                 var $master = $dialog.find(selectors.master);
                 if ($master) {
                     if ($master.length !== 1) {
-                        console.log($master.length + " masters for toggle <" + toggle + ">");
+                        console.error($master.length + " masters for toggle <" + toggle + ">");
                         return;
                     }
 
