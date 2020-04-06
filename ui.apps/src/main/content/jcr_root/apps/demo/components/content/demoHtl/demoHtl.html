@@ -3,25 +3,26 @@
 <!--/* Get all child resources */-->
 <div data-sly-list.continentMultifield="${resource.getChildren}">
 
-    <!--/* Keep only the continents multifield and iterate over its children */-->
-    <ul data-sly-test="${continentMultifield.name == 'continents'}"
-        data-sly-list.continent="${continentMultifield.getChildren}">
+    <div data-sly-test="${continentMultifield.name == 'continents'}">
+        <p>Continents</p>
 
-        <li>Name: ${continent.continentName}</li>
-        <li>Countries:
+        <ul data-sly-list.continent="${continentMultifield.getChildren}">
+            <li>Name: ${continent.continentName}</li>
+            <li>Countries:
 
-            <!--/* Get all child resources */-->
-            <div data-sly-list.countryMultifield="${continent.getChildren}">
+                <!--/* Get all child resources */-->
+                <div data-sly-list.countryMultifield="${continent.getChildren}">
 
-                <!--/* Keep only the countries multifield and iterate over its children */-->
-                <ul data-sly-test="${countryMultifield.name == 'countries'}"
-                    data-sly-list.country="${countryMultifield.getChildren}">
+                    <!--/* Keep only the countries multifield and iterate over its children */-->
+                    <ul data-sly-test="${countryMultifield.name == 'countries'}"
+                        data-sly-list.country="${countryMultifield.getChildren}">
 
-                    <li>Name: ${country.countryName}</li>
-                    <li>Code: ${country.code}</li>
-                </ul>
-            </div>
-        </li>
-    </ul>
+                        <li>Name: ${country.countryName}</li>
+                        <li>Code: ${country.code}</li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>
 
