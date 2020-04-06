@@ -47,7 +47,7 @@ public class DemoModelImpl implements DemoModel {
     @PostConstruct
     protected void init() {
         if (continents == null) {
-            log.error("Could not find policy");
+            log.error("Could not find continents child resource");
             return;
         }
 
