@@ -1,4 +1,30 @@
-<div>
-    <p>Demo component
-    <p>
+<h2><strong>Using model</strong></h2>
+<div data-sly-use.model="com.theopendle.core.models.demo.DemoModel">
+    <p>Continents</p>
+    <ul data-sly-list.continent="${model.continentList}">
+        <li>Name: ${continent.name}</li>
+        <li>Countries:
+            <ul data-sly-list.country="${continent.countries}">
+                <li>Name: ${country.name}</li>
+                <li>Code: ${country.code}</li>
+            </ul>
+        </li>
+    </ul>
 </div>
+<br>
+<br>
+<h2><strong>Using pure HTL</strong></h2>
+<div data-sly-list.continentMultifield="${resource.getChildren}">
+    <ul data-sly-list.continent="${continentMultifield.getChildren}">
+        <li>Name: ${continent.continentName}</li>
+        <li>Countries:
+            <div data-sly-list.countryMultifield="${continent.getChildren}">
+                <ul data-sly-list.country="${countryMultifield.getChildren}">
+                    <li>Name: ${country.countryName}</li>
+                    <li>Code: ${country.code}</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+
