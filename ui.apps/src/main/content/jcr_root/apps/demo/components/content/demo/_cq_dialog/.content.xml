@@ -33,7 +33,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 emptyText="Name"
-                                                name="./continentName"/>
+                                                name="./name"/>
                                         <countries
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
@@ -48,7 +48,7 @@
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                             emptyText="Name"
-                                                            name="./countryName"/>
+                                                            name="./name"/>
                                                     <code
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -82,7 +82,7 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                 emptyText="Name"
-                                                name="./productName"/>
+                                                name="./name"/>
                                     </items>
                                 </field>
                             </products>

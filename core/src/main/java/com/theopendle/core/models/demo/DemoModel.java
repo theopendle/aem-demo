@@ -18,5 +18,5 @@ package com.theopendle.core.models.demo;
 import java.util.List;
 
 public interface DemoModel {
-    List<Continent> getContinentList();
+    List<Continent> getContinents();
 }
