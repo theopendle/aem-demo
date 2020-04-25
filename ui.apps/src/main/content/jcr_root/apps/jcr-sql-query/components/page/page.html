@@ -7,47 +7,52 @@
     <sly data-sly-set.clientlibPath="/apps/jcr-sql-query/components/page/clientlib"></sly>
     <link rel="stylesheet" href="${clientlibPath}.min.css">
 </head>
-<body class="coral--light u-coral-padding">
+<body class="coral--light">
 
-<section class="coral-FixedColumn">
-    <div class="coral-Form coral-Form--vertical">
-        <div class="coral-Form-fieldset">
-            <h3 class="coral-Heading">Query</h3>
-            <div class="coral-Form-fieldwrapper">
+<div class="app">
+    <section class="app__query coral-FixedColumn">
+        <div class="coral-Form coral-Form--vertical">
+            <div class="coral-Form-fieldset">
+                <h3 class="coral-Heading">Query</h3>
+                <div class="coral-Form-fieldwrapper">
                 <textarea id="query-field"
                           class="coral-Form-field"
                           is="coral-textarea"
                           placeholder="Enter your query here"
-                          name="query">select * from [cq:Component] as node where isdescendantnode(node, '/apps/demo')</textarea>
-            </div>
+                          name="query"
+                          onload="app.adjustTextArea(this)"
+                          onkeyup="app.adjustTextArea(this)"></textarea>
 
-            <div class="coral-Form-fieldwrapper">
-                <button is="coral-button"
-                        variant="primary"
-                        icon="playCircle"
-                        iconsize="S"
-                        onClick="app.executeQuery();">
-                    Execute
-                </button>
+                    <div class="coral-Form-fieldwrapper">
+                        <button is="coral-button"
+                                variant="primary"
+                                icon="playCircle"
+                                iconsize="S"
+                                onClick="app.executeQuery();">
+                            Execute
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="coral-FixedColumn">
-    <div class="coral-Form-fieldset">
-        <coral-alert hidden
-                     size="L"
-                     variant="error">
-            <coral-alert-header>ERROR</coral-alert-header>
-            <coral-alert-content id="feedback-alert-content"></coral-alert-content>
-        </coral-alert>
-    </div>
-</section>
+    <section class="app__feedback coral-FixedColumn">
+        <div class="coral-Form-fieldset">
+            <coral-alert hidden
+                         size="L"
+                         variant="error">
+                <coral-alert-header>ERROR</coral-alert-header>
+                <coral-alert-content id="feedback-alert-content"></coral-alert-content>
+            </coral-alert>
+        </div>
+    </section>
 
-<section id="result-container"
-         class="coral-FixedColumn">
-</section>
+    <section id="result-container"
+             class="app__results coral-FixedColumn"
+             hidden>
+    </section>
+</div>
 
 
 <!--/* have to use script because data-coral-icons */-->

@@ -31,12 +31,10 @@
                     // If bad request, show feedback to user
                     if (response.status !== 200) {
                         response.json().then(function (data) {
-                            if (data.feedback) {
-                                alertContent.innerText = data.feedback;
-                            }
+                            alertContent.innerText = data.feedback || data.error;
 
                             alertContent.parentElement.removeAttribute("hidden");
-                            tableContainer.innerHTML = '';
+                            tableContainer.setAttribute("hidden", "true");
                         });
                         return;
                     }
@@ -46,31 +44,50 @@
                         alertContent.parentElement.setAttribute("hidden", "true");
 
                         tableContainer.innerHTML = `
+                            <p>
+                                <strong>${data.rows.length}</strong> rows in <strong>${data.executionTime}s</strong>
+                            </p>
                             <table id="result-table" 
                                    class="table-example"
                                    is="coral-table"
                                    selectable>
                                  <thead is="coral-table-head">
                                         <tr is="coral-table-row">
+                                            <th is="coral-table-headercell">N°</th>
                                             ${data.headers.map(header => `
                                             <th is="coral-table-headercell">${header}</th>
                                             `).join('')}
                                         </tr>
                                 </thead>
                                 <tbody is="coral-table-body">
-                                ${data.rows.map(row => `
+                                ${data.rows.map((row, index) => `
                                     <tr is="coral-table-row">
+                                        <td is="coral-table-cell">${index + 1}</td>
                                         ${row.values.map(value => `<td is="coral-table-cell">${value}</td>`).join('')}
                                     </tr>
                                 `).join('')}
                                 </tbody>
                             </table>`;
+
+                        tableContainer.removeAttribute("hidden");
+                        tableContainer.scrollTo(0, 0)
                     });
                 })
                 .catch(error => {
                     console.log('Fetch error: ', error);
                 });
-        }
+        },
 
+        adjustTextArea: (element) => {
+            element.style.height = "1px";
+            element.style.height = (25 + element.scrollHeight) + "px";
+        }
     };
+
+    // Execute query with Ctrl+Enter
+    document.addEventListener('keydown', function (event) {
+        if (event.ctrlKey && event.key === 'Enter') {
+            window.app.executeQuery();
+        }
+    });
 })();

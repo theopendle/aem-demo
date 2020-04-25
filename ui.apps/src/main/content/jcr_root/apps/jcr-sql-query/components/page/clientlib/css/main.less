@@ -1,0 +1,68 @@
+@form-width: 800px;
+@spacer: 16px;
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+}
+
+section {
+    max-width: 90%;
+}
+
+.app__query {
+    width: @form-width;
+
+    #query-field {
+        max-height: 200px;
+        resize: vertical;
+    }
+
+    button {
+        height: fit-content;
+        margin-left: @spacer;
+    }
+}
+
+.app__alert {
+    max-width: 90%;
+    width: @form-width;
+
+    coral-alert {
+        width: 100%;
+    }
+}
+
+.app__results {
+    flex: 1;
+    overflow: auto;
+    max-width: 100%;
+    border-top: 1px solid #E1E1E1;
+
+    #result-table {
+        width: 100%;
+        overflow: initial;
+
+        ._coral-Table-wrapper-container {
+            overflow: initial;
+        }
+    }
+}
+
+#query-field,
+coral-alert-content {
+    font-family: 'Source Code Pro', Monaco, monospace;
+    font-size: 12px;
+}
+
+.coral-Form--vertical {
+    width: 100%;
+
+    .coral-Form-fieldwrapper {
+        margin-bottom: @spacer;
+        display: flex;
+        justify-content: center;
+    }
+}

@@ -54,10 +54,11 @@ public class SqlQueryServlet extends SlingAllMethodsServlet {
         try {
             // Execute query and return results
             final QueryManager queryManager = getQueryManager(request);
+            final long startTime = System.nanoTime();
             final QueryResult result = executeQuery(queryManager, q);
-            writeResult(new Result(result), HttpStatus.SC_OK);
+            writeResult(new Result(result, System.nanoTime() - startTime), HttpStatus.SC_OK);
 
-        } catch (final InvalidQueryException e) {
+        } catch (final InvalidQueryException | UnsupportedOperationException e) {
             // If query invalid, show feedback to user
             writeResult(new Result(e.getMessage()), HttpStatus.SC_BAD_REQUEST);
             log.warn("Could not execute query: {}", e.getMessage());
@@ -89,13 +90,13 @@ public class SqlQueryServlet extends SlingAllMethodsServlet {
 
     private QueryResult executeQuery(final QueryManager queryManager, final String queryString) throws RepositoryException {
         final Query query = queryManager.createQuery(queryString, "JCR-SQL2");
-        // query.setLimit(4);
         return query.execute();
     }
 
     @Data
     public class Result {
         private String feedback;
+        private double executionTime;
         private List<String> headers;
         private List<ValueList> rows;
 
@@ -105,7 +106,8 @@ public class SqlQueryServlet extends SlingAllMethodsServlet {
          * @param queryResult result of an successfully execute query
          * @throws RepositoryException if JCR values cannot be read
          */
-        public Result(final QueryResult queryResult) throws RepositoryException {
+        public Result(final QueryResult queryResult, final long executionTime) throws RepositoryException {
+            this.executionTime = (double) executionTime / 1_000_000_000.0;
             this.headers = Arrays.asList(queryResult.getColumnNames());
 
             this.rows = new ArrayList<>();

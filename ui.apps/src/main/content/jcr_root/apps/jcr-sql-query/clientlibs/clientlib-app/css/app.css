@@ -1,3 +1,6 @@
 iframe {
     border: none;
+
+    /* Prevent iframe from rendering below screen*/
+    height: calc(100vh - 105px) !important;;
 }
