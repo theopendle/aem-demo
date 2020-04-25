@@ -11,7 +11,7 @@
 
 <section class="coral-FixedColumn">
     <div class="coral-Form coral-Form--vertical">
-        <form class="coral-Form-fieldset">
+        <div class="coral-Form-fieldset">
             <h3 class="coral-Heading">Query</h3>
             <div class="coral-Form-fieldwrapper">
                 <textarea id="query-field"
@@ -25,12 +25,14 @@
                 <button is="coral-button"
                         variant="primary"
                         icon="playCircle"
-                        iconsize="S">
+                        iconsize="S"
+                        onClick="alert('HI?');">
                     Execute
                 </button>
             </div>
 
-            <coral-alert size="L" variant="error">
+            <coral-alert size=" L
+                " variant="error">
                 <coral-alert-header>ERROR</coral-alert-header>
                 <coral-alert-content>
                     java.text.ParseException: Query: select * from [cq:Component] as node where
@@ -38,7 +40,7 @@
                     '/apps/demo(*)'; expected: )
                 </coral-alert-content>
             </coral-alert>
-        </form>
+        </div>
     </div>
 </section>
 

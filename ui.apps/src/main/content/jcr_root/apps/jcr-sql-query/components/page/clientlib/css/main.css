@@ -10,6 +10,8 @@ coral-alert {
     max-width: 600px;
 }
 
-.coral-Form-fieldwrapper {
+.coral-Form--vertical .coral-Form-fieldwrapper {
     margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
 }
