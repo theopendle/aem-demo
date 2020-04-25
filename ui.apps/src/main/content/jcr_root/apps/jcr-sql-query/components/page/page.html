@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html style="height:100%">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JCR SQL2 Query</title>
+    <sly data-sly-set.clientlibPath="/apps/jcr-sql-query/components/page/clientlib"></sly>
+    <link rel="stylesheet" href="${clientlibPath}.min.css">
+</head>
+<body class="coral--light u-coral-padding">
+
+<section class="coral-FixedColumn">
+    <div class="coral-Form coral-Form--vertical">
+        <form class="coral-Form-fieldset">
+            <h3 class="coral-Heading">Query</h3>
+            <div class="coral-Form-fieldwrapper">
+                <textarea id="query-field"
+                          class="coral-Form-field"
+                          is="coral-textarea"
+                          placeholder="Enter your query here"
+                          name="query"></textarea>
+            </div>
+
+            <div class="coral-Form-fieldwrapper">
+                <button is="coral-button"
+                        variant="primary"
+                        icon="playCircle"
+                        iconsize="S">
+                    Execute
+                </button>
+            </div>
+
+            <coral-alert size="L" variant="error">
+                <coral-alert-header>ERROR</coral-alert-header>
+                <coral-alert-content>
+                    java.text.ParseException: Query: select * from [cq:Component] as node where
+                    isdescendantnode(node,
+                    '/apps/demo(*)'; expected: )
+                </coral-alert-content>
+            </coral-alert>
+        </form>
+    </div>
+</section>
+
+<section class="coral-FixedColumn">
+    <table is="coral-table" class="table-example">
+        <colgroup>
+            <col is="coral-table-column" sortable sortabledirection="ascending">
+            <col is="coral-table-column" sortable sortabletype="number">
+            <col is="coral-table-column" sortable sortabletype="date">
+        </colgroup>
+        <thead is="coral-table-head">
+        <tr is="coral-table-row">
+            <th is="coral-table-headercell">Activities</th>
+            <th is="coral-table-headercell">Numbers</th>
+            <th is="coral-table-headercell">Date</th>
+            <th is="coral-table-headercell">Activities</th>
+            <th is="coral-table-headercell">Numbers</th>
+            <th is="coral-table-headercell">Date</th>
+            <th is="coral-table-headercell">Activities</th>
+            <th is="coral-table-headercell">Numbers</th>
+            <th is="coral-table-headercell">Date</th>
+            <th is="coral-table-headercell">Activities</th>
+            <th is="coral-table-headercell">Numbers</th>
+            <th is="coral-table-headercell">Date</th>
+            <th is="coral-table-headercell">Activities</th>
+            <th is="coral-table-headercell">Numbers</th>
+            <th is="coral-table-headercell">Date</th>
+            <th is="coral-table-headercell">Activities</th>
+            <th is="coral-table-headercell">Numbers</th>
+            <th is="coral-table-headercell">Date</th>
+            <th is="coral-table-headercell">Activities</th>
+            <th is="coral-table-headercell">Numbers</th>
+            <th is="coral-table-headercell">Date</th>
+            <th is="coral-table-headercell">Activities</th>
+            <th is="coral-table-headercell">Numbers</th>
+            <th is="coral-table-headercell">Date</th>
+            <th is="coral-table-headercell">Activities</th>
+            <th is="coral-table-headercell">Numbers</th>
+            <th is="coral-table-headercell">Date</th>
+        </tr>
+        </thead>
+        <tbody is="coral-table-body">
+        <tr is="coral-table-row">
+            <td is="coral-table-cell">Alpha</td>
+            <td is="coral-table-cell" value="23857">23,857</td>
+            <td is="coral-table-cell" value="1327705200000">January 28, 2012</td>
+        </tr>
+        <tr is="coral-table-row">
+            <td is="coral-table-cell">Beta</td>
+            <td is="coral-table-cell" value="20398">20,398</td>
+            <td is="coral-table-cell" value="1322694000000">December 1, 2011</td>
+        </tr>
+        <tr is="coral-table-row">
+            <td is="coral-table-cell">Charlie</td>
+            <td is="coral-table-cell" value="3498">3,498</td>
+            <td is="coral-table-cell" value="1329260400000">February 15, 2012</td>
+        </tr>
+        <tr is="coral-table-row">
+            <td is="coral-table-cell">Delta</td>
+            <td is="coral-table-cell" value="20398">20,398</td>
+            <td is="coral-table-cell" value="1337119200000">May 16, 2012</td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+
+<!--/* have to use script because data-coral-icons */-->
+<script src="${clientlibPath}.min.js" data-coral-icons="${clientlibPath}/resources"></script>
+</body>
+</html>

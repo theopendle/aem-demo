@@ -1,0 +1,11 @@
+#query-field, coral-alert-content {
+    font-family: 'Source Code Pro', Monaco, monospace
+}
+
+#query-field {
+    height: 200px;
+}
+
+coral-alert {
+    max-width: 600px;
+}

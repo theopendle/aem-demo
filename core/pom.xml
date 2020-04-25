@@ -43,13 +43,13 @@
                         </goals>
                         <configuration>
                             <bnd><![CDATA[
-Bundle-Category: demo
-Import-Package: javax.annotation;version=0.0.0,*
--exportcontents: ${packages;VERSIONED}
-Sling-Model-Packages: com.theopendle.core.models
--snapshot: ${tstamp;yyyyMMddHHmmssSSS}
-Bundle-DocURL:
--plugin org.apache.sling.caconfig.bndplugin.ConfigurationClassScannerPlugin
+                                Bundle-Category: demo
+                                Import-Package: javax.annotation;version=0.0.0,*
+                                -exportcontents: ${packages;VERSIONED}
+                                Sling-Model-Packages: com.theopendle.core.models
+                                -snapshot: ${tstamp;yyyyMMddHHmmssSSS}
+                                Bundle-DocURL:
+                                -plugin org.apache.sling.caconfig.bndplugin.ConfigurationClassScannerPlugin
                                 ]]></bnd>
                         </configuration>
                     </execution>
