@@ -26,26 +26,34 @@
                         variant="primary"
                         icon="playCircle"
                         iconsize="S"
-                        onClick="alert('HI?');">
+                        onClick="app.executeQuery();">
                     Execute
                 </button>
             </div>
-
-            <coral-alert size=" L
-                " variant="error">
-                <coral-alert-header>ERROR</coral-alert-header>
-                <coral-alert-content>
-                    java.text.ParseException: Query: select * from [cq:Component] as node where
-                    isdescendantnode(node,
-                    '/apps/demo(*)'; expected: )
-                </coral-alert-content>
-            </coral-alert>
         </div>
     </div>
 </section>
 
 <section class="coral-FixedColumn">
-    <table is="coral-table" class="table-example">
+    <div class="coral-Form-fieldset">
+        <coral-alert hidden
+                     size="L"
+                     variant="error">
+            <coral-alert-header>ERROR</coral-alert-header>
+            <coral-alert-content id="feedback-alert-content">
+                java.text.ParseException: Query: select * from [cq:Component] as node where
+                isdescendantnode(node,
+                '/apps/demo(*)'; expected: )
+            </coral-alert-content>
+        </coral-alert>
+    </div>
+</section>
+
+<section class="coral-FixedColumn">
+    <table hidden
+           id="result-table"
+           class="table-example"
+           is="coral-table">
         <colgroup>
             <col is="coral-table-column" sortable sortabledirection="ascending">
             <col is="coral-table-column" sortable sortabletype="number">

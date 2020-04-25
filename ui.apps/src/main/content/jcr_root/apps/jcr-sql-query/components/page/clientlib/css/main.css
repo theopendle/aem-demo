@@ -4,10 +4,11 @@
 
 #query-field {
     height: 200px;
+    width: 600px;
 }
 
 coral-alert {
-    max-width: 600px;
+    width: 100%;
 }
 
 .coral-Form--vertical .coral-Form-fieldwrapper {

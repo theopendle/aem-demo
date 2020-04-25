@@ -1,8 +1,10 @@
 package com.theopendle.core.servlets;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.http.HttpStatus;
 import org.apache.http.entity.ContentType;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
@@ -31,33 +33,54 @@ import java.util.List;
 public class SqlQueryServlet extends SlingAllMethodsServlet {
     private static final long serialVersionUID = 2598426619166789515L;
 
-    private final StringBuilder sb = new StringBuilder();
+    private SlingHttpServletResponse response;
     private PrintWriter out;
 
     @Override
     protected void doGet(final SlingHttpServletRequest request, final SlingHttpServletResponse response) throws IOException {
 
-        out = response.getWriter();
+        this.response = response;
+        this.out = response.getWriter();
+
         response.setContentType(ContentType.APPLICATION_JSON.getMimeType());
 
+        // 400 if no query
         final String q = request.getParameter("q");
         if (q == null) {
-            output("<p>Please provide a query</p>");
+            writeResult(new Result("No query"), HttpStatus.SC_BAD_REQUEST);
             return;
         }
 
         try {
-
+            // Execute query and return results
             final QueryManager queryManager = getQueryManager(request);
             final QueryResult result = executeQuery(queryManager, q);
-            output(new ObjectMapper().writeValueAsString(new Result(result)));
+            writeResult(new Result(result), HttpStatus.SC_OK);
 
+        } catch (final InvalidQueryException e) {
+            // If query invalid, show feedback to user
+            writeResult(new Result(e.getMessage()), HttpStatus.SC_BAD_REQUEST);
+            log.warn("Could not execute query: {}", e.getMessage());
 
         } catch (final Exception e) {
-            output("Error during execution: ");
-            output(e.getMessage());
-            log.error("Error", e);
+            // If error is unexpected, log it and inform user without feedback
+            writeResult("Could not execute query. See log for details.");
+            log.error("Unexpected error", e);
         }
+    }
+
+    private void writeResult(final Result result, final int httpStatus) {
+        try {
+            out.println(new ObjectMapper().writeValueAsString(result));
+            response.setStatus(httpStatus);
+        } catch (final JsonProcessingException e) {
+            writeResult("Could not serialize result");
+        }
+    }
+
+    private void writeResult(final String string) {
+        out.println("{\"error\":  \"" + string + "\"}");
+        response.setStatus(500);
     }
 
     private QueryManager getQueryManager(final SlingHttpServletRequest request) throws RepositoryException {
@@ -70,17 +93,18 @@ public class SqlQueryServlet extends SlingAllMethodsServlet {
         return query.execute();
     }
 
-    private void output(final String string) {
-        out.println(string);
-        sb.append(string);
-        sb.append("\n");
-    }
-
     @Data
     public class Result {
-        private final List<String> headers;
-        private final List<ValueList> rows;
+        private String feedback;
+        private List<String> headers;
+        private List<ValueList> rows;
 
+        /**
+         * Succes constructor: builds the result from data.
+         *
+         * @param queryResult result of an successfully execute query
+         * @throws RepositoryException if JCR values cannot be read
+         */
         public Result(final QueryResult queryResult) throws RepositoryException {
             this.headers = Arrays.asList(queryResult.getColumnNames());
 
@@ -99,6 +123,15 @@ public class SqlQueryServlet extends SlingAllMethodsServlet {
                 valueList.setValues(values);
                 this.rows.add(valueList);
             }
+        }
+
+        /**
+         * Failure constructor: builds the result from a feedback message about the query error.
+         *
+         * @param feedback error message of a failed query
+         */
+        public Result(final String feedback) {
+            this.feedback = feedback;
         }
     }
 
