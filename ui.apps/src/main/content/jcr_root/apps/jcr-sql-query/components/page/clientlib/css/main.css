@@ -9,3 +9,7 @@
 coral-alert {
     max-width: 600px;
 }
+
+.coral-Form-fieldwrapper {
+    margin-bottom: 16px;
+}
