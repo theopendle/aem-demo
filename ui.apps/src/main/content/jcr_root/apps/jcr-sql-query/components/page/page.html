@@ -15,21 +15,39 @@
             <div class="coral-Form-fieldset">
                 <h3 class="coral-Heading">Query</h3>
                 <div class="coral-Form-fieldwrapper">
-                <textarea id="query-field"
-                          class="coral-Form-field"
-                          is="coral-textarea"
-                          placeholder="Enter your query here"
-                          name="query"
-                          onload="app.adjustTextArea(this)"
-                          onkeyup="app.adjustTextArea(this)"></textarea>
+                    <textarea id="query-field"
+                              class="coral-Form-field"
+                              is="coral-textarea"
+                              placeholder="Enter your query here"
+                              name="query"
+                              onload="app.adjustTextArea(this)"
+                              onkeyup="app.adjustTextArea(this)"></textarea>
 
-                    <div class="coral-Form-fieldwrapper">
+                    <div class="query__button coral-Form-fieldwrapper">
                         <button is="coral-button"
                                 variant="primary"
                                 icon="playCircle"
+                                block=""
                                 iconsize="S"
                                 onClick="app.executeQuery();">
                             Execute
+                        </button>
+                        <p>( Ctrl + Enter )</p>
+                        <button is="coral-button"
+                                variant="quietsecondary"
+                                icon="copy"
+                                block=""
+                                iconsize="S"
+                                onClick="app.executeQuery();">
+                            Copy query
+                        </button>
+                        <button is="coral-button"
+                                variant="quietsecondary"
+                                icon="link"
+                                block=""
+                                iconsize="S"
+                                onClick="app.executeQuery();">
+                            Copy URL
                         </button>
                     </div>
                 </div>

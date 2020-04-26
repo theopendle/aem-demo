@@ -6,6 +6,8 @@
     window.app = {
 
         executeQuery: () => {
+            const start = performance.now();
+
             const queryField = document.getElementById(QUERY_FIELD_ID);
             if (!queryField) {
                 console.error(`Cannot find query field by id '${QUERY_FIELD_ID}'`);
@@ -45,7 +47,7 @@
 
                         tableContainer.innerHTML = `
                             <p>
-                                <strong>${data.rows.length}</strong> rows in <strong>${data.executionTime}s</strong>
+                                <strong>${data.table.rows.length}</strong> rows in <strong>${data.executionTime}s</strong>
                             </p>
                             <table id="result-table" 
                                    class="table-example"
@@ -54,16 +56,16 @@
                                  <thead is="coral-table-head">
                                         <tr is="coral-table-row">
                                             <th is="coral-table-headercell">N°</th>
-                                            ${data.headers.map(header => `
+                                            ${data.table.header.cells.map(header => `
                                             <th is="coral-table-headercell">${header}</th>
                                             `).join('')}
                                         </tr>
                                 </thead>
                                 <tbody is="coral-table-body">
-                                ${data.rows.map((row, index) => `
+                                ${data.table.rows.map((row, index) => `
                                     <tr is="coral-table-row">
                                         <td is="coral-table-cell">${index + 1}</td>
-                                        ${row.values.map(value => `<td is="coral-table-cell">${value}</td>`).join('')}
+                                        ${row.cells.map(value => `<td is="coral-table-cell">${value}</td>`).join('')}
                                     </tr>
                                 `).join('')}
                                 </tbody>
@@ -71,6 +73,7 @@
 
                         tableContainer.removeAttribute("hidden");
                         tableContainer.scrollTo(0, 0)
+                        console.log("Call to doSomething took " + (performance.now() - start) + " milliseconds.")
                     });
                 })
                 .catch(error => {

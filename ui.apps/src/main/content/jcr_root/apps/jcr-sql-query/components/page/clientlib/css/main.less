@@ -20,9 +20,21 @@ section {
         resize: vertical;
     }
 
-    button {
-        height: fit-content;
+    .query__button {
         margin-left: @spacer;
+        flex-direction: column;
+        align-items: center;
+        width: 160px;
+
+        p {
+            margin-top: 0;
+            color: #888888;
+        }
+
+        button {
+            height: fit-content;
+            margin-bottom: 8px;
+        }
     }
 }
 
