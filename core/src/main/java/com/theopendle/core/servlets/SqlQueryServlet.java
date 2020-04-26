@@ -68,7 +68,8 @@ public class SqlQueryServlet extends SlingAllMethodsServlet {
             // Execute query and return results
             final QueryResult queryResult = service.executeQuery(sanitizedQuery, request);
             final ResultTable resultTable = service.toTable(queryResult, groupByColumn);
-            writeResult(new Result(resultTable, System.nanoTime() - startTime), HttpStatus.SC_OK);
+            final double executionTime = (double) (System.nanoTime() - startTime) / 1_000_000_000.0;
+            writeResult(new Result(resultTable, executionTime), HttpStatus.SC_OK);
 
         } catch (final InvalidQueryException | UnsupportedOperationException e) {
             // If query invalid, show feedback to user
