@@ -1,0 +1,38 @@
+@aem-dark-color: #4b4b4b;
+@highlight: #2583d8;
+
+.wireframe .cq-Overlay {
+    color: @aem-dark-color;
+    border-color: @aem-dark-color;
+    border: solid .125rem;
+    margin: -0.125rem;
+
+    .cq-Overlay--component-name {
+        display: block;
+        color: white;
+        background-color: @aem-dark-color;
+    }
+
+    &.is-hover,
+    &.is-active,
+    &.is-selected {
+        color: @highlight;
+        border-color: @highlight;
+
+        .cq-Overlay--component-name {
+            display: block;
+            color: white;
+            background-color: @highlight;
+            font-weight: bold;
+        }
+    }
+}
+
+
+//.cq-Overlay {
+//    &>.is-selected
+//
+//}.is-selected > .cq-Overlay--component-name {
+//    color: white;
+//    background-color: @highlight;
+//}
