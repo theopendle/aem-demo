@@ -5,13 +5,18 @@
     const wireframeButton = document.getElementById("wireframe-button");
 
     function toggleWireframeClass() {
+
         const overlayRoot = document.querySelector(".cq-Overlay--container");
 
         if (overlayRoot.classList.contains(WIREFRAME_CLASS)) {
+
+            // Toggle off
             overlayRoot.classList.remove(WIREFRAME_CLASS);
             wireframeButton.classList.remove(WIREFRAME_ACTIVE_CLASS);
-            
+
         } else {
+
+            // Toggle on
             overlayRoot.classList.add(WIREFRAME_CLASS);
             wireframeButton.classList.add(WIREFRAME_ACTIVE_CLASS);
         }
@@ -21,5 +26,3 @@
         toggleWireframeClass();
     });
 })();
-
-

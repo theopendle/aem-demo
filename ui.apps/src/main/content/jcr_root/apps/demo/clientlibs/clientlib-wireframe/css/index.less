@@ -1,6 +1,10 @@
+// AEM TouchUI grey theme
 @aem-dark-color: #4b4b4b;
+
+// Editor highlight blue
 @highlight: #2583d8;
 
+// Highlight the button if the wireframe is active
 #wireframe-button {
     color: #a0a0a0;
 
@@ -9,6 +13,7 @@
     }
 }
 
+// Display the bounding boxes and component name in grey, regardless of selection
 .wireframe .cq-Overlay {
     color: @aem-dark-color;
     border-color: @aem-dark-color;
@@ -21,6 +26,7 @@
         background-color: @aem-dark-color;
     }
 
+    // Retain the blue color for active, hover or selected component
     &.is-hover,
     &.is-active,
     &.is-selected {
