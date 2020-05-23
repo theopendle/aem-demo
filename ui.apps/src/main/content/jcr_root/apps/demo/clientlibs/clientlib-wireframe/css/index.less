@@ -1,6 +1,14 @@
 @aem-dark-color: #4b4b4b;
 @highlight: #2583d8;
 
+#wireframe-button {
+    color: #a0a0a0;
+
+    &.wireframe-active {
+        color: white;
+    }
+}
+
 .wireframe .cq-Overlay {
     color: @aem-dark-color;
     border-color: @aem-dark-color;
@@ -27,12 +35,3 @@
         }
     }
 }
-
-
-//.cq-Overlay {
-//    &>.is-selected
-//
-//}.is-selected > .cq-Overlay--component-name {
-//    color: white;
-//    background-color: @highlight;
-//}
