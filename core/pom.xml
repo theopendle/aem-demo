@@ -137,6 +137,10 @@ Bundle-DocURL:
         </dependency>
         <!-- Other Dependencies -->
         <dependency>
+            <groupId>com.adobe.cq</groupId>
+            <artifactId>core.wcm.components.core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
