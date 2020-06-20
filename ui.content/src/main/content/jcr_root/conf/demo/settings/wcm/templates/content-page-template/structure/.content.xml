@@ -17,14 +17,22 @@
         </root>
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">
-                <phone
+                <phone-portrait
                         jcr:primaryType="nt:unstructured"
-                        title="Smaller Screen"
-                        width="{Long}768"/>
-                <tablet
+                        title="320px"
+                        width="{Long}320"/>
+                <tablet-portrait
                         jcr:primaryType="nt:unstructured"
-                        title="Tablet"
-                        width="{Long}1200"/>
+                        title="600px"
+                        width="{Long}600"/>
+                <phone-landscape
+                        jcr:primaryType="nt:unstructured"
+                        title="840px"
+                        width="{Long}720"/>
+                <tablet-landscape
+                        jcr:primaryType="nt:unstructured"
+                        title="1280px"
+                        width="{Long}1280"/>
             </breakpoints>
         </cq:responsive>
     </jcr:content>
