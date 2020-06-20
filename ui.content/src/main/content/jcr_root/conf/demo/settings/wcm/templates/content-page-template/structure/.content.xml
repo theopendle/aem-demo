@@ -27,8 +27,8 @@
                         width="{Long}768"/>
                 <phone-landscape
                         jcr:primaryType="nt:unstructured"
-                        title="840px"
-                        width="{Long}840"/>
+                        title="992px"
+                        width="{Long}992"/>
                 <tablet-landscape
                         jcr:primaryType="nt:unstructured"
                         title="1200px"
