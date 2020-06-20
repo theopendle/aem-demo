@@ -11,12 +11,12 @@
             jcr:lastModifiedBy="admin"
             jcr:mixinTypes="[mix:versionable]"
             jcr:primaryType="nt:unstructured"
-            jcr:title="Archetypical Devices"
+            jcr:title="Archetypal Devices"
             jcr:uuid="2f97d923-bc28-49dc-8c34-d59a43f9163f"
             sling:resourceType="wcm/mobile/components/devicegroup"
             capabilities="[com.day.cq.wcm.mobile.api.device.capability.CSS,com.day.cq.wcm.mobile.api.device.capability.DeviceRotation,com.day.cq.wcm.mobile.api.device.capability.Images,com.day.cq.wcm.mobile.api.device.capability.JavaScript]"
             disableEmulator="true"
-            emulators="[/libs/wcm/mobile/components/emulators/galaxy5]">
+            emulators="[/apps/demo/emulators/phone-portrait,/apps/demo/emulators/phone-landscape,/apps/demo/emulators/tablet-portrait,/apps/demo/emulators/tablet-landscape]">
         <emulator
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="wcm/mobile/components/devicegroup/emulator"/>

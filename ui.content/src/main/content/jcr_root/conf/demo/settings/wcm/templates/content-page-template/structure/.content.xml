@@ -3,7 +3,7 @@
           xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
           jcr:primaryType="cq:Page">
     <jcr:content
-            cq:deviceGroups="[/etc/mobile/groups/responsive]"
+            cq:deviceGroups="[/etc/mobile/groups/archetype]"
             cq:template="/conf/demo/settings/wcm/templates/content-page-template"
             jcr:primaryType="cq:PageContent"
             sling:resourceType="demo/components/structure/page">
