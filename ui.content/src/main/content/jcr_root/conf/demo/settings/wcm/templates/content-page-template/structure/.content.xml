@@ -19,20 +19,20 @@
             <breakpoints jcr:primaryType="nt:unstructured">
                 <phone-portrait
                         jcr:primaryType="nt:unstructured"
-                        title="320px"
-                        width="{Long}320"/>
+                        title="480px"
+                        width="{Long}480"/>
                 <tablet-portrait
                         jcr:primaryType="nt:unstructured"
-                        title="600px"
-                        width="{Long}600"/>
+                        title="768px"
+                        width="{Long}768"/>
                 <phone-landscape
                         jcr:primaryType="nt:unstructured"
                         title="840px"
-                        width="{Long}720"/>
+                        width="{Long}840"/>
                 <tablet-landscape
                         jcr:primaryType="nt:unstructured"
-                        title="1280px"
-                        width="{Long}1280"/>
+                        title="1200px"
+                        width="{Long}1200"/>
             </breakpoints>
         </cq:responsive>
     </jcr:content>
