@@ -15,11 +15,14 @@
  */
 package com.theopendle.core.servlets;
 
+import com.day.cq.commons.jcr.JcrConstants;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
+import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
+import org.apache.sling.servlets.annotations.SlingServletResourceTypes;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.propertytypes.ServiceDescription;
 
@@ -33,11 +36,11 @@ import java.io.IOException;
  * {@link SlingSafeMethodsServlet} shall be used for HTTP methods that are
  * idempotent. For write operations use the {@link SlingAllMethodsServlet}.
  */
-@Component(service = Servlet.class,
-        property = {
-                "sling.servlet.methods=" + HttpConstants.METHOD_GET,
-                "sling.servlet.paths=" + "/bin/demo"
-        })
+@Component(service = { Servlet.class })
+@SlingServletResourceTypes(
+        resourceTypes="demo/components/page",
+        methods=HttpConstants.METHOD_GET,
+        extensions="txt")
 @ServiceDescription("Simple Demo Servlet")
 public class SimpleServlet extends SlingSafeMethodsServlet {
 
@@ -45,9 +48,9 @@ public class SimpleServlet extends SlingSafeMethodsServlet {
 
     @Override
     protected void doGet(final SlingHttpServletRequest req,
-                         final SlingHttpServletResponse resp) throws ServletException, IOException {
-
+            final SlingHttpServletResponse resp) throws ServletException, IOException {
+        final Resource resource = req.getResource();
         resp.setContentType("text/plain");
-        resp.getWriter().write("Hello");
+        resp.getWriter().write("Title = " + resource.getValueMap().get(JcrConstants.JCR_TITLE));
     }
 }

@@ -15,17 +15,17 @@
  |  limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.theopendle</groupId>
-        <artifactId>com.theopendle.demo</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>demo</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>com.theopendle.demo.core</artifactId>
-    <name>demo - Core</name>
-    <description>Core bundle for demo</description>
+    <artifactId>demo.core</artifactId>
+    <name>Demo Site - Core</name>
+    <description>Core bundle for Demo Site</description>
     <build>
         <plugins>
             <plugin>
@@ -43,24 +43,11 @@
                         </goals>
                         <configuration>
                             <bnd><![CDATA[
-Bundle-Category: demo
 Import-Package: javax.annotation;version=0.0.0,*
--exportcontents: ${packages;VERSIONED}
-Sling-Model-Packages: com.theopendle.core.models
--snapshot: ${tstamp;yyyyMMddHHmmssSSS}
-Bundle-DocURL:
--plugin org.apache.sling.caconfig.bndplugin.ConfigurationClassScannerPlugin
                                 ]]></bnd>
                         </configuration>
                     </execution>
                 </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.sling</groupId>
-                        <artifactId>org.apache.sling.caconfig.bnd-plugin</artifactId>
-                        <version>1.0.2</version>
-                    </dependency>
-                </dependencies>
             </plugin>
             <plugin>
                 <groupId>biz.aQute.bnd</groupId>
@@ -94,77 +81,23 @@ Bundle-DocURL:
     </build>
 
     <dependencies>
-        <!-- OSGi Dependencies -->
         <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.annotation.versioning</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.annotation.bundle</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.service.metatype.annotations</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.service.component.annotations</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.service.component</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.service.cm</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.service.event</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.service.log</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.framework</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.resource</artifactId>
-        </dependency>
-        <!-- Other Dependencies -->
-        <dependency>
-            <groupId>com.adobe.cq</groupId>
-            <artifactId>core.wcm.components.core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.jcr</groupId>
-            <artifactId>jcr</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
+            <groupId>uk.org.lidalia</groupId>
+            <artifactId>slf4j-test</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.adobe.aem</groupId>
-            <artifactId>uber-jar</artifactId>
-            <classifier>apis</classifier>
+            <artifactId>aem-sdk-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.sling</groupId>
-            <artifactId>org.apache.sling.models.api</artifactId>
+            <groupId>com.adobe.cq</groupId>
+            <artifactId>core.wcm.components.core</artifactId>
+            <scope>test</scope>
         </dependency>
+
+
+        <!-- Testing -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -183,22 +116,29 @@ Bundle-DocURL:
         <dependency>
             <groupId>junit-addons</groupId>
             <artifactId>junit-addons</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.wcm</groupId>
             <artifactId>io.wcm.testing.aem-mock.junit5</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>uk.org.lidalia</groupId>
-            <artifactId>slf4j-test</artifactId>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.testing.caconfig-mock-plugin</artifactId>
+            <scope>test</scope>
         </dependency>
-
-
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.12</version>
-            <scope>provided</scope>
+            <groupId>com.adobe.cq</groupId>
+            <artifactId>core.wcm.components.testing.aem-mock-plugin</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- Required to be able to support injection with @Self and @Via -->
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.models.impl</artifactId>
+            <version>1.4.4</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

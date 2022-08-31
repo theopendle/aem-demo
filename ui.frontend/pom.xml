@@ -23,17 +23,17 @@
     <!-- ====================================================================== -->
     <parent>
         <groupId>com.theopendle</groupId>
-        <artifactId>com.theopendle.demo</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>demo</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <!-- ====================================================================== -->
     <!-- P R O J E C T  D E S C R I P T I O N                                   -->
     <!-- ====================================================================== -->
-    <artifactId>com.theopendle.demo.ui.frontend</artifactId>
+    <artifactId>demo.ui.frontend</artifactId>
     <packaging>pom</packaging>
-    <name>demo - UI Frontend</name>
+    <name>Demo Site - UI Frontend</name>
 
 
     <!-- ====================================================================== -->
@@ -61,7 +61,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.1.1</version>
                 <executions>
                     <execution>
                         <phase>package</phase>

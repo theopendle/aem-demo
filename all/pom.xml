@@ -23,18 +23,18 @@
     <!-- ====================================================================== -->
     <parent>
         <groupId>com.theopendle</groupId>
-        <artifactId>com.theopendle.demo</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>demo</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <!-- ====================================================================== -->
     <!-- P R O J E C T  D E S C R I P T I O N                                   -->
     <!-- ====================================================================== -->
-    <artifactId>com.theopendle.demo.all</artifactId>
+    <artifactId>demo.all</artifactId>
     <packaging>content-package</packaging>
-    <name>demo - All</name>
-    <description>All content package for demo</description>
+    <name>Demo Site - All</name>
+    <description>All content package for Demo Site</description>
 
     <!-- ====================================================================== -->
     <!-- B U I L D   D E F I N I T I O N                                        -->
@@ -49,37 +49,33 @@
                 <artifactId>filevault-package-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <group>demo</group>
+                    <group>com.theopendle</group>
+                    <packageType>container</packageType>
+                    <!-- skip sub package validation for now as some vendor packages like CIF apps will not pass -->
+                    <skipSubPackageValidation>true</skipSubPackageValidation>
                     <embeddeds>
                         <embedded>
                             <groupId>com.theopendle</groupId>
-                            <artifactId>com.theopendle.demo.ui.apps</artifactId>
+                            <artifactId>demo.ui.apps</artifactId>
                             <type>zip</type>
                             <target>/apps/demo-packages/application/install</target>
                         </embedded>
                         <embedded>
                             <groupId>com.theopendle</groupId>
-                            <artifactId>com.theopendle.demo.ui.content</artifactId>
+                            <artifactId>demo.core</artifactId>
+                            <target>/apps/demo-packages/application/install</target>
+                        </embedded>
+                        <embedded>
+                            <groupId>com.theopendle</groupId>
+                            <artifactId>demo.ui.content</artifactId>
                             <type>zip</type>
                             <target>/apps/demo-packages/content/install</target>
                         </embedded>
                         <embedded>
-                            <groupId>com.adobe.cq</groupId>
-                            <artifactId>core.wcm.components.content</artifactId>
+                            <groupId>com.theopendle</groupId>
+                            <artifactId>demo.ui.config</artifactId>
                             <type>zip</type>
-                            <target>/apps/demo-vendor-packages/application/install</target>
-                        </embedded>
-                        <embedded>
-                            <groupId>com.adobe.cq</groupId>
-                            <artifactId>core.wcm.components.config</artifactId>
-                            <type>zip</type>
-                            <target>/apps/demo-vendor-packages/application/install</target>
-                        </embedded>
-                        <embedded>
-                            <groupId>com.adobe.cq</groupId>
-                            <artifactId>core.wcm.components.examples</artifactId>
-                            <type>zip</type>
-                            <target>/apps/demo-vendor-packages/content/install</target>
+                            <target>/apps/demo-packages/application/install</target>
                         </embedded>
                     </embeddeds>
                 </configuration>
@@ -95,13 +91,24 @@
             </plugin>
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
-                <version>2.4.1</version>
                 <executions>
                     <execution>
                         <id>auto-clean</id>
-                        <phase>install</phase>
+                        <phase>initialize</phase>
                         <goals>
                             <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.adobe.aem</groupId>
+                <artifactId>aemanalyser-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>aem-analyser</id>
+                        <goals>
+                            <goal>project-analyse</goal>                           
                         </goals>
                     </execution>
                 </executions>
@@ -164,7 +171,7 @@
                     </plugin>
                 </plugins>
             </build>
-        </profile>
+    </profile>
     </profiles>
 
     <!-- ====================================================================== -->
@@ -173,31 +180,22 @@
     <dependencies>
         <dependency>
             <groupId>com.theopendle</groupId>
-            <artifactId>com.theopendle.demo.ui.apps</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <artifactId>demo.ui.apps</artifactId>
+            <version>${project.version}</version>
             <type>zip</type>
         </dependency>
         <dependency>
             <groupId>com.theopendle</groupId>
-            <artifactId>com.theopendle.demo.ui.content</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <artifactId>demo.ui.content</artifactId>
+            <version>${project.version}</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>com.theopendle</groupId>
+            <artifactId>demo.ui.config</artifactId>
+            <version>${project.version}</version>
             <type>zip</type>
         </dependency>
 
-        <dependency>
-            <groupId>com.adobe.cq</groupId>
-            <artifactId>core.wcm.components.content</artifactId>
-            <type>zip</type>
-        </dependency>
-        <dependency>
-            <groupId>com.adobe.cq</groupId>
-            <artifactId>core.wcm.components.config</artifactId>
-            <type>zip</type>
-        </dependency>
-        <dependency>
-            <groupId>com.adobe.cq</groupId>
-            <artifactId>core.wcm.components.examples</artifactId>
-            <type>zip</type>
-        </dependency>
     </dependencies>
 </project>
