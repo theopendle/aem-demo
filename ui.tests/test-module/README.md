@@ -14,7 +14,7 @@ Sample UI tests using [Webdriver.IO](https://webdriver.io/) framework
 
 
 ```
-npm install
+npm ci
 ```
 
 

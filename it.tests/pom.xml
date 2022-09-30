@@ -25,8 +25,8 @@
     </parent>
 
     <artifactId>demo.it.tests</artifactId>
-    <name>Demo Site - Integration Tests</name>
-    <description>Integration Tests for Demo Site</description>
+    <name>Demo - Integration Tests</name>
+    <description>Integration Tests for Demo</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -47,8 +47,8 @@
         </dependency>
         <dependency>
             <groupId>com.adobe.cq</groupId>
-            <artifactId>aem-cloud-testing-clients</artifactId>
-            <version>1.0.5</version>
+            <artifactId>cq-testing-clients-65</artifactId>
+            <version>1.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>

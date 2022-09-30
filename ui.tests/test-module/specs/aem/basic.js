@@ -29,7 +29,7 @@ describe('AEM Basic', () => {
 
         $('[data-foundation-toggleable-control-src$="solutionswitcher.html"]').click();
 
-        $('coral-shell-menu[aria-label$="solutions"]').waitForDisplayed();
+        $('coral-shell-solutionswitcher').waitForDisplayed();
     });
 
 });

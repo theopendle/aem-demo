@@ -30,8 +30,8 @@
     </parent>
 
     <artifactId>demo.ui.tests</artifactId>
-    <name>Demo Site - UI Tests</name>
-    <description>UI Tests for Demo Site</description>
+    <name>Demo - UI Tests</name>
+    <description>UI Tests for Demo</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -125,7 +125,7 @@
                                 </configuration>
                             </execution>
                             <execution>
-                                <id>npm install</id>
+                                <id>npm ci</id>
                                 <phase>test</phase>
                                 <goals>
                                     <goal>npm</goal>

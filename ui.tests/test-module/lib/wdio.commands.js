@@ -115,7 +115,7 @@ browser.addCommand('AEMSitesSetPageTitle', function(parentPath, name, title) {
 
     // Navigate to page parent path
     browser.url(path.posix.join(AEM_SITES_PATH, parentPath));
-    const checkboxSelector = `[data-foundation-collection-item-id="${path.posix.join(parentPath, name)}"] [type="checkbox"]`;
+    const checkboxSelector = `[data-foundation-collection-item-id="${path.posix.join(parentPath, name)}"] td:first-child img`;
 
     // Select sample page in the list
     $(checkboxSelector).waitForClickable();

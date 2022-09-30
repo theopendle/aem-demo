@@ -20,7 +20,7 @@
             <languagenavigation jcr:primaryType="nt:unstructured">
                 <policy_xfm
                     jcr:primaryType="nt:unstructured"
-                    jcr:title="Demo Site Language Navigation - Experience Fragment"
+                    jcr:title="Demo Language Navigation - Experience Fragment"
                     sling:resourceType="wcm/core/components/policy/policy"
                     navigationRoot="/content/demo"
                     structureDepth="1">
@@ -210,7 +210,7 @@
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Page Root"
                     sling:resourceType="wcm/core/components/policy/policy"
-                    components="[group:Demo Site - Content,/apps/demo/components/form/container,group:Demo Site - Structure]">
+                    components="[group:Demo - Content,/apps/demo/components/form/container,group:Demo - Structure]">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:authoring jcr:primaryType="nt:unstructured">
                         <assetToComponentMapping jcr:primaryType="nt:unstructured">
@@ -240,7 +240,7 @@
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Page Content"
                     sling:resourceType="wcm/core/components/policy/policy"
-                    components="[group:Demo Site - Content,/apps/demo/components/form/container]">
+                    components="[group:Demo - Content,/apps/demo/components/form/container]">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:authoring jcr:primaryType="nt:unstructured">
                         <assetToComponentMapping jcr:primaryType="nt:unstructured">
@@ -278,7 +278,7 @@
                     jcr:primaryType="nt:unstructured"
                     jcr:title="XF Root"
                     sling:resourceType="wcm/core/components/policy/policy"
-                    components="[group:Demo Site - Content,/apps/demo/components/form/container]">
+                    components="[group:Demo - Content,/apps/demo/components/form/container]">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:authoring jcr:primaryType="nt:unstructured">
                         <assetToComponentMapping jcr:primaryType="nt:unstructured">

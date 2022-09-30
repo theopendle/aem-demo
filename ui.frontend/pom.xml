@@ -33,7 +33,7 @@
     <!-- ====================================================================== -->
     <artifactId>demo.ui.frontend</artifactId>
     <packaging>pom</packaging>
-    <name>Demo Site - UI Frontend</name>
+    <name>Demo - UI Frontend</name>
 
 
     <!-- ====================================================================== -->

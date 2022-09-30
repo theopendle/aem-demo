@@ -4,7 +4,7 @@
     cq:allowedTemplates="[/conf/demo/settings/wcm/templates/(?!page-).*]"
     cq:conf="/conf/demo"
     jcr:primaryType="sling:OrderedFolder"
-    jcr:title="Demo Site Fragments"
+    jcr:title="Demo Fragments"
     sling:configRef="/conf/demo">
     <us/>
 </jcr:root>
