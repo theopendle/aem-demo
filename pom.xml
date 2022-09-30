@@ -47,8 +47,6 @@
             
     <module>it.tests</module>
             
-    <module>dispatcher</module>
-            
     <module>ui.tests</module>
       
   </modules>
