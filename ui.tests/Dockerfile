@@ -51,7 +51,7 @@ WORKDIR ${APP_PATH}
 # Copy + Install WDIO project
 ENV TEST_RUN_COMMAND "npm run test-cloud"
 COPY test-module/ ./
-RUN npm install
+RUN npm ci
 
 # Begin CloudManager Convention >>>
 COPY wait-for-grid.sh .
