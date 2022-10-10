@@ -50,6 +50,10 @@
                         <!-- DAM folder root, will be created via repoinit -->
                         <filter><root>/content/dam/demo</root></filter>
 
+                        <!-- Replication agents -->
+                        <filter><root>/etc</root></filter>
+                        <filter><root>/etc/replication</root></filter>
+
                     </filters>
                 </configuration>
             </plugin>
