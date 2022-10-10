@@ -1,0 +1,12 @@
+{
+  "jdbc.password": "test",
+  "jdbc.driver.class": "oracle.jdbc.driver.OracleDriver",
+  "datasource.name": "oracle",
+  "jdbc.connection.uri": "jdbc:oracle:thin:@localhost:1521:test",
+  "jdbc.validation.query": "SELECT 1 FROM DUAL",
+  "default.readonly": false,
+  "default.autocommit": false,
+  "jdbc.username": "test",
+  "pool.max.wait.msec": 1000,
+  "pool.size": 10
+}

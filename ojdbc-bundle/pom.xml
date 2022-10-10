@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.theopendle</groupId>
+        <artifactId>demo</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>demo.ojdbc-bundle</artifactId>
+    <packaging>bundle</packaging>
+    <name>Demo - OJDBC bundle</name>
+    <description>OSGi wrapper for Oracle JDBC jar.</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>3.5.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-License>non-free</Bundle-License>
+                        <Bundle-Vendor>Oracle</Bundle-Vendor>
+                        <_exportcontents>*</_exportcontents>
+                        <Export-Package>
+                            oracle.core.*;version="${project.version}",
+                            oracle.jdbc.*;version="${project.version}",
+                            oracle.jpub.*;version="${project.version}",
+                            oracle.net.*;version="${project.version}",
+                            oracle.security.*;version="${project.version}",
+                            oracle.sql.*;version="${project.version}"
+                        </Export-Package>
+                        <Import-Package>*;resolution:=optional</Import-Package>
+                        <Private-Package>!*</Private-Package>
+                        <Embed-Dependency>*;scope=compile|runtime;type=!pom;inline=true</Embed-Dependency>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>21.7.0.0</version>
+        </dependency>
+    </dependencies>
+</project>
+
+
