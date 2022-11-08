@@ -8,11 +8,11 @@
         <root
             cq:policy="demo/components/container/policy_1574694950110"
             jcr:primaryType="nt:unstructured"
-            sling:resourceType="wcm/core/components/policies/mapping">
+            sling:resourceType="wcm/core/components/policies/importMapping">
             <container
                 cq:policy="demo/components/container/policy_1574695586800"
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="wcm/core/components/policies/mapping"/>
+                sling:resourceType="wcm/core/components/policies/importMapping"/>
         </root>
     </jcr:content>
 </jcr:root>

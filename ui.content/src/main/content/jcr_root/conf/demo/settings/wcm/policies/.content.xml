@@ -206,7 +206,7 @@
             </experiencefragment>
             <container jcr:primaryType="nt:unstructured">
                 <policy_1574694950110
-                    jcr:description="Allows the template components and defines the component mapping (this configures what components should be automatically created when authors drop assets from the content finder to the page editor)."
+                    jcr:description="Allows the template components and defines the component importMapping (this configures what components should be automatically created when authors drop assets from the content finder to the page editor)."
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Page Root"
                     sling:resourceType="wcm/core/components/policy/policy"
@@ -236,7 +236,7 @@
                     </cq:authoring>
                 </policy_1574694950110>
                 <policy_1574695586800
-                    jcr:description="Allows the page components and defines the component mapping (this configures what components should be automatically created when authors drop assets from the content finder to the page editor)."
+                    jcr:description="Allows the page components and defines the component importMapping (this configures what components should be automatically created when authors drop assets from the content finder to the page editor)."
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Page Content"
                     sling:resourceType="wcm/core/components/policy/policy"
@@ -274,7 +274,7 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_649128221558427>
                 <policy_1575040440977
-                    jcr:description="Allows the template components and defines the component mapping (this configures what components should be automatically created when authors drop assets from the content finder to the page editor)."
+                    jcr:description="Allows the template components and defines the component importMapping (this configures what components should be automatically created when authors drop assets from the content finder to the page editor)."
                     jcr:primaryType="nt:unstructured"
                     jcr:title="XF Root"
                     sling:resourceType="wcm/core/components/policy/policy"
