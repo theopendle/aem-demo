@@ -165,8 +165,9 @@ Import-Package: javax.annotation;version=0.0.0,*
             <artifactId>org.apache.sling.models.api</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
+            <groupId>com.theopendle</groupId>
+            <artifactId>demo.opencsv-bundle</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
 

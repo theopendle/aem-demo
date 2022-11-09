@@ -2,12 +2,15 @@ package com.theopendle.core.fundfinder;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
+import com.opencsv.bean.CsvToBean;
+import com.opencsv.bean.CsvToBeanBuilder;
+import com.opencsv.bean.FuzzyMappingStrategyBuilder;
+import com.opencsv.bean.MappingStrategy;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ServiceScope;
 import org.osgi.service.metatype.annotations.Designate;
 
@@ -17,7 +20,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.function.BiConsumer;
 
@@ -25,9 +27,6 @@ import java.util.function.BiConsumer;
 @Component(service = DataImportService.class, scope = ServiceScope.SINGLETON, immediate = true)
 @Designate(ocd = DataImportServiceConfig.class)
 public class DataImportServiceImpl implements DataImportService {
-
-    @Reference
-    private FundRepository fundRepository;
 
     private DataImportServiceConfig configuration;
 
@@ -38,51 +37,73 @@ public class DataImportServiceImpl implements DataImportService {
 
     @Override
     public void importDataFromCsv() {
-        try (final Connection connection = null) {
-            connection.setAutoCommit(false);
-
-            // Read first CSV and insert
-            final ImportMapping fundInfoImportMapping = ImportMapping.builder()
-                    .filePath(configuration.fundInfoCsv())
-                    .query("insert into aem_apl.fund (isin, name) values (?, ?)")
-                    .consumer((preparedStatement, row) -> {
-                        try {
-                            preparedStatement.setString(1, row[0]);
-                            preparedStatement.setString(2, row[1]);
-                        } catch (final SQLException e) {
-                            log.error("Error mapping of CSV row into <{}>", PreparedStatement.class.getSimpleName(), e);
-                        }
-                    })
+        final MappingStrategy<FundInfo> strategy = new FuzzyMappingStrategyBuilder<FundInfo>().build();
+        strategy.setType(FundInfo.class);
+        try {
+            final CsvToBean<FundInfo> csvtobean = new CsvToBeanBuilder<FundInfo>(new FileReader(configuration.fundInfoCsv()))
+                    .withType(FundInfo.class)
+                    .withSeparator(';')
+                    .withSkipLines(2)
                     .build();
 
-            // Update, using the ISIN as a key
-            final ImportMapping fundPriceImportMapping = ImportMapping.builder()
-                    .filePath(configuration.fundPriceCsv())
-                    .query("update aem_apl.fund set price = ? where isin = ?")
-                    .consumer((preparedStatement, row) -> {
-                        try {
-                            preparedStatement.setString(1, row[1]);
-                            preparedStatement.setString(2, row[0]);
-                        } catch (final SQLException e) {
-                            log.error("Error mapping of CSV row into <{}>", PreparedStatement.class.getSimpleName(), e);
-                        }
-                    })
-                    .build();
+            final Iterator<FundInfo> iterator = csvtobean.iterator();
 
-            for (final ImportMapping mapping : Arrays.asList(fundInfoImportMapping, fundPriceImportMapping)) {
-                if (!importByMapping(connection, mapping)) {
-                    log.error("Error during import from <{}>. Abandoning import", mapping.getFilePath());
-                    connection.rollback();
-                    return;
-                }
+            while (iterator.hasNext()) {
+                final FundInfo fundInfo = iterator.next();
+                log.info("Read <{}>: <{}¦", fundInfo.getClass().getSimpleName(), fundInfo);
             }
 
-            connection.commit();
-
-        } catch (final SQLException e) {
-            log.error("Could not configure connection", e);
+        } catch (final FileNotFoundException e) {
+            log.error("Could not find <{}>", configuration.fundInfoCsv(), e);
         }
     }
+
+
+//        try (final Connection connection = null) {
+//            connection.setAutoCommit(false);
+//
+//            // Read first CSV and insert
+//            final ImportMapping fundInfoImportMapping = ImportMapping.builder()
+//                    .filePath(configuration.fundInfoCsv())
+//                    .query("insert into aem_apl.fund (isin, name) values (?, ?)")
+//                    .consumer((preparedStatement, row) -> {
+//                        try {
+//                            preparedStatement.setString(1, row[0]);
+//                            preparedStatement.setString(2, row[1]);
+//                        } catch (final SQLException e) {
+//                            log.error("Error mapping of CSV row into <{}>", PreparedStatement.class.getSimpleName(), e);
+//                        }
+//                    })
+//                    .build();
+//
+//            // Update, using the ISIN as a key
+//            final ImportMapping fundPriceImportMapping = ImportMapping.builder()
+//                    .filePath(configuration.fundPriceCsv())
+//                    .query("update aem_apl.fund set price = ? where isin = ?")
+//                    .consumer((preparedStatement, row) -> {
+//                        try {
+//                            preparedStatement.setString(1, row[1]);
+//                            preparedStatement.setString(2, row[0]);
+//                        } catch (final SQLException e) {
+//                            log.error("Error mapping of CSV row into <{}>", PreparedStatement.class.getSimpleName(), e);
+//                        }
+//                    })
+//                    .build();
+//
+//            for (final ImportMapping mapping : Arrays.asList(fundInfoImportMapping, fundPriceImportMapping)) {
+//                if (!importByMapping(connection, mapping)) {
+//                    log.error("Error during import from <{}>. Abandoning import", mapping.getFilePath());
+//                    connection.rollback();
+//                    return;
+//                }
+//            }
+//
+//            connection.commit();
+//
+//        } catch (final SQLException e) {
+//            log.error("Could not configure connection", e);
+//        }
+//}
 
     private boolean importByMapping(final Connection connection, final ImportMapping importMapping) {
 

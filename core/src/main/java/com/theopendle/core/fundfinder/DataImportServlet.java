@@ -12,7 +12,7 @@ import org.osgi.service.component.propertytypes.ServiceDescription;
 import javax.servlet.Servlet;
 
 
-@Component(service = {Servlet.class},
+@Component(service = Servlet.class,
         property = {
                 ServletResolverConstants.SLING_SERVLET_METHODS + "=" + HttpConstants.METHOD_GET,
                 ServletResolverConstants.SLING_SERVLET_PATHS + "=/bin/fundfinder/import",
