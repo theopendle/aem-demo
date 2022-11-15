@@ -15,20 +15,40 @@
  */
 package com.theopendle.core.models;
 
+import com.day.cq.tagging.Tag;
+import com.theopendle.core.injection.cookie.CookieValue;
+import com.theopendle.core.injection.tag.PageTag;
 import lombok.Getter;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Model(adaptables = SlingHttpServletRequest.class)
 public class HelloWorldImpl implements HelloWorld {
+
+    @CookieValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    private String marketingConsent;
+
+    @CookieValue(cookie = "demo_session_id", injectionStrategy = InjectionStrategy.OPTIONAL)
+    private String sessionId;
+
+    @PageTag
+    private List<Tag> tags;
+
+    @PageTag(name = "customTag")
+    private Tag customTag;
 
     @Getter
     private String message;
 
     @PostConstruct
     protected void init() {
-        message = "Hello world";
+        message = "Marketing consent: " + marketingConsent + "\n"
+                + "Session ID: " + sessionId + "\n"
+                + "Tags: " + (tags == null ? "null" : tags.size()) + "\n"
+                + "Custom tag: " + (customTag == null ? "null" : customTag.getName());
     }
 }
