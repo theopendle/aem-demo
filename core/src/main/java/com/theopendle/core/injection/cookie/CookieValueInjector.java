@@ -19,6 +19,7 @@ import java.lang.reflect.Type;
 @Slf4j
 @Component(service = {Injector.class, StaticInjectAnnotationProcessorFactory.class})
 public class CookieValueInjector implements Injector, StaticInjectAnnotationProcessorFactory {
+
     public static final String NAME = "cookie-value";
 
     @Override
@@ -35,11 +36,6 @@ public class CookieValueInjector implements Injector, StaticInjectAnnotationProc
 
         final CookieValue annotation = element.getAnnotation(CookieValue.class);
         if (annotation == null) {
-            return null;
-        }
-
-        if (!type.equals(String.class)) {
-            log.error("Cookie value can only be injected as <{}>", String.class.getSimpleName());
             return null;
         }
 
@@ -61,7 +57,18 @@ public class CookieValueInjector implements Injector, StaticInjectAnnotationProc
             return null;
         }
 
-        return cookie.getValue();
+        final String stringValue = cookie.getValue();
+
+        if (type.equals(String.class)) {
+            return stringValue;
+        }
+
+        if (type.equals(Boolean.class)) {
+            return Boolean.parseBoolean(stringValue);
+        }
+
+        log.error("Cookie value can only be injected as type <{}>", type.getClass());
+        return null;
     }
 
     // This rather clunky method in conjunction with CookieValueProcessor to pass the values of the annotation to the

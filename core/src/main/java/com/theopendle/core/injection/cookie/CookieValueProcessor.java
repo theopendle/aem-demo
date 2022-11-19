@@ -11,7 +11,7 @@ public class CookieValueProcessor implements InjectAnnotationProcessor2 {
 
     @Override
     public String getName() {
-        return annotation.cookie();
+        return null;
     }
 
     @Override

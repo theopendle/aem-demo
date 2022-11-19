@@ -21,7 +21,6 @@ import com.theopendle.core.injection.tag.PageTag;
 import lombok.Getter;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -29,11 +28,11 @@ import java.util.List;
 @Model(adaptables = SlingHttpServletRequest.class)
 public class HelloWorldImpl implements HelloWorld {
 
-    @CookieValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-    private String marketingConsent;
-
-    @CookieValue(cookie = "demo_session_id", injectionStrategy = InjectionStrategy.OPTIONAL)
+    @CookieValue
     private String sessionId;
+
+    @CookieValue(cookie = "demo_marketing_consent")
+    private Boolean marketingConsent;
 
     @PageTag
     private List<Tag> tags;
@@ -46,8 +45,8 @@ public class HelloWorldImpl implements HelloWorld {
 
     @PostConstruct
     protected void init() {
-        message = "Marketing consent: " + marketingConsent + "\n"
-                + "Session ID: " + sessionId + "\n"
+        message = "Session ID: " + sessionId + "\n"
+                + "Marketing consent given: " + marketingConsent + "\n"
                 + "Tags: " + (tags == null ? "null" : tags.size()) + "\n"
                 + "Custom tag: " + (customTag == null ? "null" : customTag.getName());
     }
