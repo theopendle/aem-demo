@@ -1,0 +1,25 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.js @ categories='granite.csrf.standalone'}"></sly>
+
+</style>
+
+<textarea id="message"></textarea>
+<button id="contact-button">Send</button>
+<script>
+    document.querySelector("#contact-button").addEventListener("click", () => {
+        Granite.csrf.refreshToken()
+        .then((token) => {
+            fetch("/bin/contact", {
+                method: "POST",
+                body: JSON.stringify({ message: document.querySelector("#message").value }),
+                headers: { "CSRF-Token": token },
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                alert(data.feedback)
+            });
+        });
+    })
+
+</script>
+</div>
