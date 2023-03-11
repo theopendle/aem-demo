@@ -36,11 +36,11 @@ import java.io.IOException;
  * {@link SlingSafeMethodsServlet} shall be used for HTTP methods that are
  * idempotent. For write operations use the {@link SlingAllMethodsServlet}.
  */
-@Component(service = { Servlet.class })
+@Component(service = {Servlet.class})
 @SlingServletResourceTypes(
-        resourceTypes="demo/components/page",
-        methods=HttpConstants.METHOD_GET,
-        extensions="txt")
+        resourceTypes = "demo/components/page",
+        methods = HttpConstants.METHOD_GET,
+        extensions = "txt")
 @ServiceDescription("Simple Demo Servlet")
 public class SimpleServlet extends SlingSafeMethodsServlet {
 
@@ -48,7 +48,7 @@ public class SimpleServlet extends SlingSafeMethodsServlet {
 
     @Override
     protected void doGet(final SlingHttpServletRequest req,
-            final SlingHttpServletResponse resp) throws ServletException, IOException {
+                         final SlingHttpServletResponse resp) throws ServletException, IOException {
         final Resource resource = req.getResource();
         resp.setContentType("text/plain");
         resp.getWriter().write("Title = " + resource.getValueMap().get(JcrConstants.JCR_TITLE));
