@@ -56,18 +56,18 @@
                     <embeddeds>
                         <embedded>
                             <groupId>com.theopendle</groupId>
-                            <artifactId>demo.ui.apps</artifactId>
-                            <type>zip</type>
-                            <target>/apps/demo-packages/application/install</target>
-                        </embedded>
-                        <embedded>
-                            <groupId>com.theopendle</groupId>
                             <artifactId>demo.core</artifactId>
                             <target>/apps/demo-packages/application/install</target>
                         </embedded>
                         <embedded>
                             <groupId>com.theopendle</groupId>
-                            <artifactId>demo.ojdb-bundle</artifactId>
+                            <artifactId>demo.ojdbc-bundle</artifactId>
+                            <target>/apps/demo-packages/application/install</target>
+                        </embedded>
+                        <embedded>
+                            <groupId>com.theopendle</groupId>
+                            <artifactId>demo.ui.apps</artifactId>
+                            <type>zip</type>
                             <target>/apps/demo-packages/application/install</target>
                         </embedded>
                         <embedded>
@@ -189,6 +189,16 @@
     <!-- D E P E N D E N C I E S                                                -->
     <!-- ====================================================================== -->
     <dependencies>
+        <dependency>
+            <groupId>com.theopendle</groupId>
+            <artifactId>demo.core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.theopendle</groupId>
+            <artifactId>demo.ojdbc-bundle</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.theopendle</groupId>
             <artifactId>demo.ui.apps</artifactId>
