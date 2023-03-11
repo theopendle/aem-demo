@@ -4,19 +4,19 @@ import lombok.AllArgsConstructor;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.spi.injectorspecific.InjectAnnotationProcessor2;
 
-@AllArgsConstructor
-public class RequestParameterProcessor implements InjectAnnotationProcessor2 {
+import java.lang.annotation.Annotation;
 
-    private RequestParameter annotation;
+@AllArgsConstructor
+public abstract class AbstractSimpleInjectAnnotationProcessor<R extends Annotation> implements InjectAnnotationProcessor2 {
+
+    protected R annotation;
+
+    @Override
+    public abstract InjectionStrategy getInjectionStrategy();
 
     @Override
     public String getName() {
         return null;
-    }
-
-    @Override
-    public InjectionStrategy getInjectionStrategy() {
-        return annotation.injectionStrategy();
     }
 
     @Override

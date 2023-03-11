@@ -1,4 +1,4 @@
-package com.theopendle.core.injectors;
+package com.theopendle.core.injectors.request;
 
 import org.apache.sling.models.annotations.Source;
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
