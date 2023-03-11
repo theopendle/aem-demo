@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <!-- ====================================================================== -->
@@ -19,7 +20,8 @@
     <packaging>content-package</packaging>
     <name>Demo - Repository Structure Package</name>
     <description>
-        Empty package that defines the structure of the Adobe Experience Manager repository the Code packages in this project deploy into.
+        Empty package that defines the structure of the Adobe Experience Manager repository the Code packages in this
+        project deploy into.
         Any roots in the Code packages of this project should have their parent enumerated in the Filters list below.
     </description>
 
@@ -34,21 +36,39 @@
                     </properties>
                     <filters>
                         <!-- /apps root -->
-                        <filter><root>/apps</root></filter>
-                        <filter><root>/apps/demo</root></filter>
+                        <filter>
+                            <root>/apps</root>
+                        </filter>
+                        <filter>
+                            <root>/apps/demo</root>
+                        </filter>
 
                         <!-- Common overlay roots -->
-                        <filter><root>/apps/sling</root></filter>
-                        <filter><root>/apps/cq</root></filter>
-                        <filter><root>/apps/dam</root></filter>
-                        <filter><root>/apps/wcm</root></filter>
-                        <filter><root>/apps/msm</root></filter>
+                        <filter>
+                            <root>/apps/sling</root>
+                        </filter>
+                        <filter>
+                            <root>/apps/cq</root>
+                        </filter>
+                        <filter>
+                            <root>/apps/dam</root>
+                        </filter>
+                        <filter>
+                            <root>/apps/wcm</root>
+                        </filter>
+                        <filter>
+                            <root>/apps/msm</root>
+                        </filter>
 
                         <!-- Immutable context-aware configurations -->
-                        <filter><root>/apps/settings</root></filter>
+                        <filter>
+                            <root>/apps/settings</root>
+                        </filter>
 
                         <!-- DAM folder root, will be created via repoinit -->
-                        <filter><root>/content/dam/demo</root></filter>
+                        <filter>
+                            <root>/content/dam/demo</root>
+                        </filter>
 
                     </filters>
                 </configuration>

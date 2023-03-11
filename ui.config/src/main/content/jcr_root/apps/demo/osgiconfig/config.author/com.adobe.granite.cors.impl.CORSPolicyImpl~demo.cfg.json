@@ -1,6 +1,10 @@
 {
-  "alloworigin": ["http://localhost:3000"],
-  "allowedpaths": ["/(content|conf)/demo.*"],
+  "alloworigin": [
+    "http://localhost:3000"
+  ],
+  "allowedpaths": [
+    "/(content|conf)/demo.*"
+  ],
   "supportedheaders": [
     "Authorization",
     "Origin",
@@ -10,6 +14,9 @@
     "Access-Control-Request-Method",
     "Access-Control-Request-Headers"
   ],
-  "supportedmethods": ["GET","HEAD"],
+  "supportedmethods": [
+    "GET",
+    "HEAD"
+  ],
   "alloworiginregexp": []
 }
