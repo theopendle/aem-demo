@@ -10,4 +10,9 @@ public interface EntityConfig {
      * @return the resource type of the generic entity. EG: "my-project/entities/my-entity"
      */
     String getEntityResourceType();
+
+    /**
+     * @return the resource type of the table row. EG: my-project/entities/my-entity/row
+     */
+    String getRowResourceType();
 }

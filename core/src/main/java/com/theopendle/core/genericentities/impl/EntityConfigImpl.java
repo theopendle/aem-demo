@@ -25,6 +25,9 @@ public class EntityConfigImpl implements EntityConfig {
     @Getter
     private String entityResourceType;
 
+    @Getter
+    private String rowResourceType;
+
     @PostConstruct
     public void init() {
 
@@ -49,6 +52,7 @@ public class EntityConfigImpl implements EntityConfig {
 
         this.rootResource = rootResource;
         this.entityResourceType = entityResourceType;
+        this.rowResourceType = entityResourceType + "/row";
     }
 
 }

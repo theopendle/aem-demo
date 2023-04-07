@@ -4,7 +4,6 @@ import com.adobe.cq.commerce.common.ValueMapDecorator;
 import com.adobe.granite.ui.components.ds.DataSource;
 import com.adobe.granite.ui.components.ds.SimpleDataSource;
 import com.adobe.granite.ui.components.ds.ValueMapResource;
-import com.day.cq.commons.jcr.JcrConstants;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -90,7 +89,7 @@ public class AbstractTableDataSource {
                 .map(object -> new ObjectMapper().convertValue(object, new TypeReference<Map<String, Object>>() {
                 }))
 
-//                .peek(propertyMap -> propertyMap.put("sling:resourceType", "demo/consoles/genericentity/table/components/row"))
+                .peek(propertyMap -> propertyMap.put("sling:resourceType", entityConfig.getRowResourceType()))
 
                 // Convert to value map
                 .map(ValueMapDecorator::new)
@@ -98,7 +97,10 @@ public class AbstractTableDataSource {
                 // Build fake resource
                 // TODO: Use something else as the path
                 .map(valueMap -> (Resource) new ValueMapResource(
-                        request.getResourceResolver(), "/content/data", JcrConstants.NT_UNSTRUCTURED, valueMap))
+                        request.getResourceResolver(),
+                        entityConfig.getRootResource().getPath(),
+                        entityConfig.getRowResourceType(),
+                        valueMap))
                 .iterator();
 
         request.setAttribute(DataSource.class.getName(), new SimpleDataSource(dataIterator));
