@@ -1,4 +1,4 @@
-package com.theopendle.core.genericentities.datasource.impl;
+package com.theopendle.core.genericentities.table.datasource.impl;
 
 public class DataSourceException extends Exception {
     public DataSourceException(final String message) {
