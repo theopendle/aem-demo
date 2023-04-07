@@ -1368,6 +1368,12 @@ Bundle-DocURL:
                 <version>${core.wcm.components.version}</version>
 
             </dependency>
+            <dependency>
+                <groupId>org.jetbrains</groupId>
+                <artifactId>annotations</artifactId>
+                <version>24.0.1</version>
+            </dependency>
+
 
             <!-- Testing -->
 
