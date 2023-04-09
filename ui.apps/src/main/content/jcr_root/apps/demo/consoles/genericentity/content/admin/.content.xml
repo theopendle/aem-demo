@@ -15,7 +15,7 @@
         <clientlibs
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/includeclientlibs"
-                categories="[coralui3,granite.ui.coral.foundation,demo.generic-entities]"/>
+                categories="[coralui3,granite.ui.coral.foundation,demo.generic-entities.admin]"/>
     </head>
     <views jcr:primaryType="nt:unstructured">
         <list
@@ -43,19 +43,11 @@
     <actions jcr:primaryType="nt:unstructured">
         <selection jcr:primaryType="nt:unstructured">
             <delete
-                    granite:id="toggleDeleteBackupDialog"
+                    granite:id="deleteEntityButton"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/anchorbutton"
                     icon="delete"
                     text="Delete"
-                    variant="actionBar"
-                    x-cq-linkchecker="skip"/>
-            <download
-                    granite:id="downloadBackupDialog"
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="granite/ui/components/coral/foundation/anchorbutton"
-                    icon="dataDownload"
-                    text="Download"
                     variant="actionBar"
                     x-cq-linkchecker="skip"/>
         </selection>
