@@ -2,5 +2,6 @@
      data-sly-test="${config.createFormPath}"
      data-sly-resource="${config.createFormPath}"/>
 
-<!--/* Hidden fields */-->
-<!--  TODO: add primary and resource types -->
+<!--/* Hidden technical fields */-->
+<input hidden type="text" name="./sling:resourceType" value="${config.entityResourceType}"/>
+<input hidden type="text" name="./jcr:primaryType" value="nt:unstructured"/>
