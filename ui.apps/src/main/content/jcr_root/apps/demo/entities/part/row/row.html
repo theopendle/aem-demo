@@ -1,16 +1,20 @@
-<tr data-sly-use.model="com.theopendle.core.parts.Part"
+<tr data-sly-use.model="com.theopendle.core.parts.PartRow"
     is="coral-table-row"
     data-id="${model.name}"
     data-path="${model.path}">
 
     <!--/* Checkbox for selection */-->
-    <!-- TODO:  Implament selection -->
-    <!--/*     <td is="coral-table-cell"> */-->
-    <!--/*         <coral-checkbox coral-table-rowselect/> */-->
-    <!--/*     </td> */-->
+    <td is="coral-table-cell">
+        <coral-checkbox coral-table-rowselect/>
+    </td>
 
+    <!--/* ID */-->
     <td is="coral-table-cell" value="${model.name}">
         <span>${model.name}</span>
+    </td>
+
+    <td is="coral-table-cell" value="${model.title}">
+        <span>${model.title}</span>
     </td>
 
     <td is="coral-table-cell" value="${model.description}">

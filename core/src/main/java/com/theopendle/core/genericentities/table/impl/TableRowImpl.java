@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.node.ValueNode;
 import com.theopendle.core.genericentities.table.TableRow;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
@@ -17,8 +18,9 @@ import java.util.stream.Collectors;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @Slf4j
-@Model(adaptables = Resource.class)
+@Model(adaptables = Resource.class, adapters = TableRow.class)
 public class TableRowImpl implements TableRow {
 
     // TODO: remove this
@@ -30,8 +32,8 @@ public class TableRowImpl implements TableRow {
     private List<String> values;
 
     @PostConstruct
-    public static void init() {
-        log.debug("INIT");
+    public void init() {
+        log.debug("Rendering row with values <{}>", values);
     }
 
     public static TableRowImpl fromValueNodeMap(final Map<String, ValueNode> valueNodeMap) {

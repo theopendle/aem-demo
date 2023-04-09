@@ -4,4 +4,4 @@
           jcr:description="2.6cm steel screw"
           jcr:primaryType="nt:unstructured"
           jcr:title="Screw XFG-123"
-          sling:resourceType="demo/components/entities/part"/>
+          sling:resourceType="demo/entities/part"/>

@@ -7,7 +7,7 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 
 @JsonPropertyOrder({"name"})
-public abstract class AbstractGenericEntity extends AbstractExportedModel implements GenericEntity {
+public abstract class AbstractEntity extends AbstractExportedModel implements Entity {
 
     @Getter
     @JsonIgnore

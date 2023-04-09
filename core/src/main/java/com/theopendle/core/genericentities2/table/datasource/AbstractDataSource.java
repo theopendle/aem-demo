@@ -1,4 +1,4 @@
-package com.theopendle.core.genericentities.table.datasource;
+package com.theopendle.core.genericentities2.table.datasource;
 
 import com.adobe.cq.commerce.common.ValueMapDecorator;
 import com.adobe.granite.ui.components.ds.DataSource;
@@ -7,10 +7,9 @@ import com.adobe.granite.ui.components.ds.ValueMapResource;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.fasterxml.jackson.databind.node.ValueNode;
-import com.google.common.collect.ImmutableList;
-import com.theopendle.core.genericentities.AbstractEntity;
 import com.theopendle.core.genericentities.EntityConfig;
+import com.theopendle.core.genericentities2.AbstractEntity;
+import com.theopendle.core.genericentities2.Entity;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -22,12 +21,9 @@ import org.apache.sling.models.factory.ModelFactory;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 @Slf4j
-public class AbstractTableDataSource {
+public class AbstractDataSource {
 
     @OSGiService
     protected ModelFactory modelFactory;
@@ -41,20 +37,27 @@ public class AbstractTableDataSource {
     @Self
     protected EntityConfig entityConfig;
 
-    public static Map<String, ValueNode> getValidValues(final ObjectNode objectNode) {
-        return ImmutableList.copyOf(objectNode.fieldNames())
-                .stream()
-                .filter(fieldName -> !fieldName.startsWith(":"))
-                .filter(fieldName -> !objectNode.get(fieldName).isArray() && !objectNode.get(fieldName).isObject())
-                .collect(Collectors.toMap(Function.identity(), fieldName -> (ValueNode) objectNode.get(fieldName)));
-    }
+    protected Entity adaptToEntityModel(final Resource resource) {
 
-    protected List<ObjectNode> getEntityResourcesAsJsonNodes() {
-        return ImmutableList.copyOf(entityConfig.getRootResource().getChildren().iterator())
-                .stream()
-                .map(this::exportModel)
-                .filter(Objects::nonNull)
-                .collect(Collectors.toList());
+        // Get the model from the resource
+        try {
+            final Object model = modelFactory.getModelFromResource(resource);
+
+            // Make sure that we are getting an entity
+            if (!(model instanceof Entity)) {
+                log.error("Resource at <{}> with type <{}> was adapted to model of type <{}>, not <{}>",
+                        resource.getPath(), resource.getResourceType(), model.getClass(), AbstractEntity.class
+                );
+                return null;
+            }
+
+            return (Entity) model;
+
+        } catch (final RuntimeException e) {
+            log.error("Could not find model for resource at <{}> with type <{}>",
+                    resource.getPath(), resource.getResourceType(), e);
+            return null;
+        }
     }
 
     protected ObjectNode exportModel(final Resource resource) {
