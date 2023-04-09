@@ -1,4 +1,4 @@
-package com.theopendle.core.genericentities2.table;
+package com.theopendle.core.genericentities.table;
 
 public interface Row {
     String getPath();

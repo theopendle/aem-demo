@@ -1,6 +1,6 @@
-package com.theopendle.core.genericentities2.table;
+package com.theopendle.core.genericentities.table;
 
-import com.theopendle.core.genericentities2.AbstractEntity;
+import com.theopendle.core.genericentities.AbstractEntity;
 
 public abstract class AbstractRow<T extends AbstractEntity> implements Row {
 

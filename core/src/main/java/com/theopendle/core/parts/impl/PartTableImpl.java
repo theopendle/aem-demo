@@ -1,8 +1,8 @@
 package com.theopendle.core.parts.impl;
 
-import com.theopendle.core.genericentities2.table.Column;
-import com.theopendle.core.genericentities2.table.Table;
-import com.theopendle.core.genericentities2.table.impl.ColumnImpl;
+import com.theopendle.core.genericentities.table.Column;
+import com.theopendle.core.genericentities.table.Table;
+import com.theopendle.core.genericentities.table.impl.ColumnImpl;
 import lombok.Getter;
 
 import java.util.Arrays;

@@ -1,8 +1,8 @@
-package com.theopendle.core.genericentities2.table.impl;
+package com.theopendle.core.genericentities.table.impl;
 
 import com.day.cq.commons.jcr.JcrConstants;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.theopendle.core.genericentities2.table.Column;
+import com.theopendle.core.genericentities.table.Column;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

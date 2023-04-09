@@ -1,4 +1,4 @@
-package com.theopendle.core.genericentities2.table.datasource.impl;
+package com.theopendle.core.genericentities.table.datasource.impl;
 
 import com.adobe.cq.commerce.common.ValueMapDecorator;
 import com.adobe.granite.ui.components.ds.DataSource;
@@ -7,10 +7,10 @@ import com.adobe.granite.ui.components.ds.ValueMapResource;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableList;
-import com.theopendle.core.genericentities2.Entity;
-import com.theopendle.core.genericentities2.table.Column;
-import com.theopendle.core.genericentities2.table.datasource.AbstractDataSource;
-import com.theopendle.core.genericentities2.table.datasource.ColumnDataSource;
+import com.theopendle.core.genericentities.Entity;
+import com.theopendle.core.genericentities.table.Column;
+import com.theopendle.core.genericentities.table.datasource.AbstractDataSource;
+import com.theopendle.core.genericentities.table.datasource.ColumnDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;

@@ -2,8 +2,8 @@ package com.theopendle.core.parts.impl;
 
 import com.adobe.cq.export.json.ExporterConstants;
 import com.day.cq.commons.jcr.JcrConstants;
-import com.theopendle.core.genericentities2.AbstractEntity;
-import com.theopendle.core.genericentities2.table.Table;
+import com.theopendle.core.genericentities.AbstractEntity;
+import com.theopendle.core.genericentities.table.Table;
 import com.theopendle.core.parts.Part;
 import lombok.Getter;
 import org.apache.sling.api.resource.Resource;
@@ -15,7 +15,6 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import javax.inject.Named;
 
 @Model(adaptables = Resource.class, adapters = Part.class, resourceType = PartImpl.RESOURCE_TYPE)
-// TODO: Remove exporter
 @Exporter(name = ExporterConstants.SLING_MODEL_EXPORTER_NAME, extensions = ExporterConstants.SLING_MODEL_EXTENSION)
 public class PartImpl extends AbstractEntity implements Part {
 

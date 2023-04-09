@@ -1,12 +1,12 @@
-package com.theopendle.core.genericentities2.table.datasource.impl;
+package com.theopendle.core.genericentities.table.datasource.impl;
 
 import com.adobe.granite.ui.components.ds.DataSource;
 import com.adobe.granite.ui.components.ds.SimpleDataSource;
 import com.adobe.granite.ui.components.ds.ValueMapResource;
 import com.google.common.collect.ImmutableList;
-import com.theopendle.core.genericentities2.Entity;
-import com.theopendle.core.genericentities2.table.datasource.AbstractDataSource;
-import com.theopendle.core.genericentities2.table.datasource.RowDataSource;
+import com.theopendle.core.genericentities.Entity;
+import com.theopendle.core.genericentities.table.datasource.AbstractDataSource;
+import com.theopendle.core.genericentities.table.datasource.RowDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;

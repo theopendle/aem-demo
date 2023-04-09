@@ -32,13 +32,12 @@
                 selectionMode="row"
                 sortMode="local"
                 stateId="shell.collectionpage">
-            <!--            TODO: Rename data sources -->
             <columnsdatasource
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="demo/consoles/genericentity/table/datasources/tableColumnDataSource"/>
+                    sling:resourceType="demo/consoles/genericentity/table/datasources/columnDataSource"/>
             <datasource
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="demo/consoles/genericentity/table/datasources/tableRowDataSource"/>
+                    sling:resourceType="demo/consoles/genericentity/table/datasources/rowDataSource"/>
         </list>
     </views>
     <actions jcr:primaryType="nt:unstructured">
