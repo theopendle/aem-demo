@@ -14,6 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 @Accessors(chain = true)
 @NoArgsConstructor
 public class ColumnImpl implements Column {
+
     @JsonProperty(JcrConstants.JCR_TITLE)
     private String title;
 

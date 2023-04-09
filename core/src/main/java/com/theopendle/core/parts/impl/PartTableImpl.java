@@ -14,8 +14,8 @@ public class PartTableImpl implements Table {
     @Getter
     protected List<Column> columns = Arrays.asList(
             new ColumnImpl("select", "Select").setSelect(true),
-            new ColumnImpl("id", "ID"),
-            new ColumnImpl("title", "Title"),
-            new ColumnImpl("description", "Description")
+            new ColumnImpl("id", "ID", Column.SORT_TYPE_ALPHANUMERIC),
+            new ColumnImpl("title", "Title", Column.SORT_TYPE_ALPHANUMERIC),
+            new ColumnImpl("description", "Description", Column.SORT_TYPE_ALPHANUMERIC)
     );
 }
