@@ -3,23 +3,23 @@
           xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
           jcr:mixinTypes="[sling:VanityPath]"
           jcr:primaryType="nt:unstructured"
-          jcr:title="New Backup"
+          jcr:title="New Entity"
           sling:resourceType="granite/ui/components/shell/propertiespage"
-          backHref="/libs/granite/backup/content/admin.html"
-          consoleId="granite-backup"
-          formId="createBackupForm">
+          backHref="/mnt/overlay/demo/consoles/genericentity/content/admin.html${granite:encodeURIPath(requestPathInfo.suffix)}"
+          consoleId="demo-generic-entities"
+          formId="createEntityForm">
     <head jcr:primaryType="nt:unstructured">
         <clientlibs
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/includeclientlibs"
-                categories="[coralui3,granite.ui.coral.foundation,granite.backup]"/>
+                categories="[coralui3,granite.ui.coral.foundation,demo.generic-entities]"/>
     </head>
     <content
             granite:class="centered"
-            granite:id="createBackupForm"
+            granite:id="createEntityForm"
             jcr:primaryType="nt:unstructured"
             sling:resourceType="granite/ui/components/coral/foundation/form"
-            action="/libs/granite/backup/content/createBackup/content/items/backupform.html"
+            action="${granite:encodeURIPath(requestPathInfo.suffix)}"
             method="post"
             style="vertical">
         <items jcr:primaryType="nt:unstructured">
@@ -31,5 +31,5 @@
     <title
             jcr:primaryType="nt:unstructured"
             sling:resourceType="granite/ui/components/coral/foundation/text"
-            text="New Backup"/>
+            text="New Entity"/>
 </jcr:root>
