@@ -20,6 +20,7 @@
             jcr:primaryType="nt:unstructured"
             sling:resourceType="granite/ui/components/coral/foundation/form"
             action="${granite:encodeURIPath(requestPathInfo.suffix)}"
+            foundationForm="{Boolean}true"
             method="post"
             style="vertical">
         <items jcr:primaryType="nt:unstructured">
@@ -39,6 +40,10 @@
                 </items>
             </fixedcolumns>
         </items>
+        <successresponse
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/responses/redirect"
+                href="/mnt/overlay/demo/consoles/genericentity/content/admin.html${granite:encodeURIPath(requestPathInfo.suffix)}"/>
     </content>
     <title
             jcr:primaryType="nt:unstructured"
