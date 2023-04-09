@@ -12,7 +12,7 @@ public interface EntityConfig {
     String getEntityResourceType();
 
     /**
-     * @return the resource type of the table row. EG: my-project/entities/my-entity/row
+     * @return path to a resource representing the create form. EG: "my-project/entities/my-entity/form"
      */
-    String getRowResourceType();
+    String getCreateFormPath();
 }

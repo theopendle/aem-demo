@@ -1,75 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-    jcr:mixinTypes="[sling:VanityPath]"
-    jcr:primaryType="nt:unstructured"
-    jcr:title="Generic Entities"
-    sling:resourceType="granite/ui/components/shell/collectionpage"
-    consoleId="demo-generic-entities"
-    contentPath="/content"
-    currentView="${state[&quot;shell.collectionpage.layoutId&quot;].string}"
-    modeGroup="demo-generic-entities-collection"
-    pageURITemplate="/mnt/overlay/demo/consoles/genericentity/content/admin.html"
-    targetCollection=".demo-generic-entities-collection">
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+          xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:mixinTypes="[sling:VanityPath]"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Generic Entities"
+          sling:resourceType="granite/ui/components/shell/collectionpage"
+          consoleId="demo-generic-entities"
+          contentPath="/content"
+          currentView="${state[&quot;shell.collectionpage.layoutId&quot;].string}"
+          modeGroup="demo-generic-entities-collection"
+          pageURITemplate="/mnt/overlay/demo/consoles/genericentity/content/admin.html"
+          targetCollection=".demo-generic-entities-collection">
     <head jcr:primaryType="nt:unstructured">
         <clientlibs
-            jcr:primaryType="nt:unstructured"
-            sling:resourceType="granite/ui/components/coral/foundation/includeclientlibs"
-            categories="[coralui3,granite.ui.coral.foundation,demo.generic-entities]"/>
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/includeclientlibs"
+                categories="[coralui3,granite.ui.coral.foundation,demo.generic-entities]"/>
     </head>
     <views jcr:primaryType="nt:unstructured">
         <list
-            granite:rel="demo-generic-entities-collection"
-            jcr:primaryType="nt:unstructured"
-            jcr:title="List View"
-            sling:resourceType="granite/ui/components/coral/foundation/table"
-            draggable="{Boolean}false"
-            icon="viewList"
-            layoutId="list"
-            modeGroup="granite-backup-collection"
-            path="/content"
-            selectionCount="single"
-            selectionMode="row"
-            sortMode="local"
-            stateId="shell.collectionpage">
+                granite:rel="demo-generic-entities-collection"
+                jcr:primaryType="nt:unstructured"
+                jcr:title="List View"
+                sling:resourceType="granite/ui/components/coral/foundation/table"
+                draggable="{Boolean}false"
+                icon="viewList"
+                layoutId="list"
+                modeGroup="demo-generic-entities-collection"
+                path="/content"
+                selectionCount="single"
+                selectionMode="row"
+                sortMode="local"
+                stateId="shell.collectionpage">
             <columnsdatasource
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="demo/consoles/genericentity/table/datasources/columnDataSource"/>
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="demo/consoles/genericentity/table/datasources/columnDataSource"/>
             <datasource
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="demo/consoles/genericentity/table/datasources/rowDataSource"/>
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="demo/consoles/genericentity/table/datasources/rowDataSource"/>
         </list>
     </views>
     <actions jcr:primaryType="nt:unstructured">
         <selection jcr:primaryType="nt:unstructured">
             <delete
-                granite:id="toggleDeleteBackupDialog"
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="granite/ui/components/coral/foundation/anchorbutton"
-                icon="delete"
-                text="Delete"
-                variant="actionBar"
-                x-cq-linkchecker="skip"/>
+                    granite:id="toggleDeleteBackupDialog"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/anchorbutton"
+                    icon="delete"
+                    text="Delete"
+                    variant="actionBar"
+                    x-cq-linkchecker="skip"/>
             <download
-                granite:id="downloadBackupDialog"
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="granite/ui/components/coral/foundation/anchorbutton"
-                icon="dataDownload"
-                text="Download"
-                variant="actionBar"
-                x-cq-linkchecker="skip"/>
+                    granite:id="downloadBackupDialog"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/anchorbutton"
+                    icon="dataDownload"
+                    text="Download"
+                    variant="actionBar"
+                    x-cq-linkchecker="skip"/>
         </selection>
         <secondary jcr:primaryType="nt:unstructured">
             <create
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="granite/ui/components/coral/foundation/anchorbutton"
-                href="/mnt/overlay/demo/consoles/genericentity/content/create.html${granite:encodeURIPath(requestPathInfo.suffix)}"
-                text="Create"
-                variant="primary"
-                x-cq-linkchecker="skip"/>
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/anchorbutton"
+                    href="/mnt/overlay/demo/consoles/genericentity/content/create.html${granite:encodeURIPath(requestPathInfo.suffix)}"
+                    text="Create"
+                    variant="primary"
+                    x-cq-linkchecker="skip"/>
         </secondary>
     </actions>
     <title
-        jcr:primaryType="nt:unstructured"
-        sling:resourceType="granite/ui/components/coral/foundation/text"
-        text="Generic Entities"/>
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/text"
+            text="Generic Entities"/>
 </jcr:root>

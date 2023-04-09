@@ -2,11 +2,13 @@ package com.theopendle.core.genericentities.impl;
 
 import com.theopendle.core.genericentities.EntityConfig;
 import lombok.Getter;
+import lombok.experimental.Delegate;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.Self;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
 
@@ -22,11 +24,8 @@ public class EntityConfigImpl implements EntityConfig {
     @Getter
     private Resource rootResource;
 
-    @Getter
-    private String entityResourceType;
-
-    @Getter
-    private String rowResourceType;
+    @Delegate
+    private Properties propertyDelegate;
 
     @PostConstruct
     public void init() {
@@ -44,15 +43,18 @@ public class EntityConfigImpl implements EntityConfig {
             return;
         }
 
-        final String entityResourceType = rootResource.getValueMap().get(PN_ENTITY_RESOURCE_TYPE, String.class);
-        if (entityResourceType == null) {
-            log.error("Root resource at path <{}> does not specify <{}> property", rootPath, PN_ENTITY_RESOURCE_TYPE);
-            return;
-        }
+        propertyDelegate = rootResource.adaptTo(Properties.class);
 
         this.rootResource = rootResource;
-        this.entityResourceType = entityResourceType;
-        this.rowResourceType = entityResourceType + "/row";
     }
 
+    @Getter
+    @Model(adaptables = Resource.class)
+    public static class Properties {
+        @ValueMapValue
+        private String entityResourceType;
+
+        @ValueMapValue
+        private String createFormPath;
+    }
 }

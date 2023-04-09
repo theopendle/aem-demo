@@ -31,6 +31,7 @@ public class PartImpl extends AbstractEntity implements Part {
     private String title;
 
     @Override
+    // TODO: Get this from entity config
     public String getRowResourceType() {
         return PartRowImpl.RESOURCE_TYPE;
     }
