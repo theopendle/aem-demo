@@ -3,23 +3,24 @@
           xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
           jcr:mixinTypes="[sling:VanityPath]"
           jcr:primaryType="nt:unstructured"
-          jcr:title="New Entity"
+          jcr:title="Edit Entity"
           sling:resourceType="granite/ui/components/shell/propertiespage"
-          backHref="/mnt/overlay/demo/consoles/genericentity/content/admin.html${granite:encodeURIPath(requestPathInfo.suffix)}"
+          backHref="${empty header.Referer ? granite:concat(&quot;/mnt/overlay/demo/consoles/genericentity/content/admin.html&quot;, granite:encodeURIPath(granite:relativeParent(requestPathInfo.suffix, 1))) : header.Referer}"
           consoleId="demo-generic-entities"
-          formId="createEntityForm">
+          formId="editEntityForm">
     <head jcr:primaryType="nt:unstructured">
         <clientlibs
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/includeclientlibs"
-                categories="[coralui3,granite.ui.coral.foundation,demo.generic-entities.create]"/>
+                categories="[coralui3,granite.ui.coral.foundation,demo.generic-entities.edit]"/>
     </head>
     <content
             granite:class="centered"
-            granite:id="createEntityForm"
+            granite:id="editEntityForm"
             jcr:primaryType="nt:unstructured"
             sling:resourceType="granite/ui/components/coral/foundation/form"
             action="${granite:encodeURIPath(requestPathInfo.suffix)}"
+            dataPath="${granite:encodeURIPath(requestPathInfo.suffix)}"
             foundationForm="{Boolean}true"
             method="post"
             style="vertical">
@@ -43,10 +44,11 @@
         <successresponse
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="granite/ui/components/coral/foundation/form/responses/redirect"
-                href="/mnt/overlay/demo/consoles/genericentity/content/admin.html${granite:encodeURIPath(requestPathInfo.suffix)}"/>
+                href="${empty header.Referer ? granite:concat(&quot;/mnt/overlay/demo/consoles/genericentity/content/admin.html&quot;, granite:encodeURIPath(granite:relativeParent(requestPathInfo.suffix, 1))) : header.Referer}"
+        />
     </content>
     <title
             jcr:primaryType="nt:unstructured"
             sling:resourceType="granite/ui/components/coral/foundation/text"
-            text="New Entity"/>
+            text="Edit Entity"/>
 </jcr:root>

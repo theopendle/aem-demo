@@ -2,7 +2,6 @@
 
     const ID_DELETE_BUTTON = "#deleteEntityButton"
     const ID_DELETE_DIALOG = "#deleteEntityDialog"
-    const DN_PATH = "path"
 
     function createConfirmButton(dialog) {
         const button = new Coral.Button().set({

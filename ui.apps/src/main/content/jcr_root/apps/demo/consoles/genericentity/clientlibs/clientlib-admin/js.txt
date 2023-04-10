@@ -1,1 +1,2 @@
+js/edit.js
 js/delete.js
