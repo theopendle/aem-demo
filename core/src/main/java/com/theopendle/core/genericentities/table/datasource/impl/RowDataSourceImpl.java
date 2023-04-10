@@ -46,10 +46,11 @@ public class RowDataSourceImpl extends AbstractDataSource implements RowDataSour
         // Create new fake resources based on the row resource type
         final Iterator<Resource> dataIterator = resourceEntityMap.entrySet()
                 .stream()
+                .sorted(Map.Entry.comparingByValue())
                 .map(entry -> (Resource) new ValueMapResource(
                         request.getResourceResolver(),
                         entry.getKey().getPath(),
-                        entry.getValue().getRowResourceType(),
+                        entityConfig.getRowResourceType(),
                         entry.getKey().getValueMap())
                 )
                 .iterator();

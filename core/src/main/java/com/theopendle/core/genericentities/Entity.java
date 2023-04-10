@@ -4,7 +4,7 @@ import com.adobe.cq.export.json.ComponentExporter;
 import com.theopendle.core.genericentities.table.Table;
 import org.apache.sling.api.resource.Resource;
 
-public interface Entity extends ComponentExporter {
+public interface Entity extends ComponentExporter, Comparable<Entity> {
 
     Resource getResource();
 

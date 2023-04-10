@@ -1,4 +1,4 @@
-(function ($, Coral) {
+;(function ($, Coral) {
 
     const ID_DELETE_BUTTON = "#deleteEntityButton"
     const ID_DELETE_DIALOG = "#deleteEntityDialog"
@@ -95,7 +95,7 @@
                 return
             }
 
-            const selectedItemPath = $(".foundation-selections-item").data(DN_PATH)
+            const selectedItemPath = $(".foundation-selections-item").data("path")
             if (!selectedItemPath) {
                 console.error(`Delete was triggered for item <${selectedItem}> but no path was found using attribute <${DN_PATH}>`)
                 return

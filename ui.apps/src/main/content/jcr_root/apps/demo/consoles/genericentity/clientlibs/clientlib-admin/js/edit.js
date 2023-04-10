@@ -1,4 +1,4 @@
-(function ($) {
+;(function ($) {
 
     const ID_EDIT_BUTTON = "#editEntityButton"
 

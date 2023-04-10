@@ -1,4 +1,4 @@
-(function($){
+;(function($){
 
     const AN_ACTION = "action"
     const ID_CREATE_FORM = "#createEntityForm"
