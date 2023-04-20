@@ -89,6 +89,13 @@ module.exports = {
             patterns: [
                 { from: path.resolve(__dirname, SOURCE_ROOT + '/resources'), to: './clientlib-site/' }
             ]
+        }),
+
+        // Copy Shoelace assets (eg: icons) into clientlib
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: path.resolve(__dirname, 'node_modules/@shoelace-style/shoelace/dist/assets'), to: './clientlib-site/assets' }
+            ]
         })
     ],
     stats: {

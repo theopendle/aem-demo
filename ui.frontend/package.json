@@ -55,7 +55,11 @@
     "webpack-dev-server": "^4.6.0",
     "webpack-merge": "^5.8.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@shoelace-style/shoelace": "^2.4.0",
+    "@ui5/webcomponents": "^1.12.2",
+    "lit": "^2.7.2"
+  },
   "browserslist": [
     "last 2 version",
     "> 1%"

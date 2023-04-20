@@ -1,5 +1,6 @@
 
 @import 'variables';
 @import 'base';
-@import '../components/**/*.scss';
 @import './styles/*.scss';
+
+@import '@shoelace-style/shoelace/dist/themes/light.css';
