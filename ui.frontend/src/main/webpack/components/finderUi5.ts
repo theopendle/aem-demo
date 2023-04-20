@@ -25,9 +25,12 @@ export class FinderUi5 extends LitElement {
         <form>
             <ui5-label class="samples-big-margin-right" for="myInput" required show-colon>Name</ui5-label>
             <ui5-input id="myInput" placeholder="Enter your Name" required></ui5-input>
+            <ui5-button icon="search" icon-end design="Emphasized">Search</ui5-button>
+            <ui5-button icon="decline" icon-end>Reset</ui5-button>
         </form>
         
         <ui5-table>
+
             <!-- Columns -->
             <ui5-table-column slot="columns">Name</ui5-table-column>
             <ui5-table-column slot="columns">Type</ui5-table-column>
