@@ -87,7 +87,10 @@ module.exports = {
         }),
         new CopyWebpackPlugin({
             patterns: [
-                { from: path.resolve(__dirname, SOURCE_ROOT + '/resources'), to: './clientlib-site/' }
+                { from: path.resolve(__dirname, SOURCE_ROOT + '/resources'), to: './clientlib-site/' },
+
+                // Copy Shoelace assets to dist/shoelace
+                { from: path.resolve(__dirname, 'node_modules/@shoelace-style/shoelace/dist/assets'), to: path.resolve(__dirname, 'dist/clientlib-site/shoelace/assets') }
             ]
         })
     ],

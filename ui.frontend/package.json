@@ -56,7 +56,9 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@shoelace-style/shoelace": "^2.4.0",
     "@ui5/webcomponents": "^1.12.2",
+    "@ui5/webcomponents-base": "^1.12.2",
     "@ui5/webcomponents-icons": "^1.12.2",
     "lit": "^2.7.2"
   },
