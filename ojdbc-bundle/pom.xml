@@ -36,7 +36,6 @@
                             oracle.sql.*;version="${project.version}"
                         </Export-Package>
                         <Import-Package>*;resolution:=optional</Import-Package>
-                        <Private-Package>!*</Private-Package>
                         <Embed-Dependency>*;scope=compile|runtime;type=!pom;inline=true</Embed-Dependency>
                     </instructions>
                 </configuration>
