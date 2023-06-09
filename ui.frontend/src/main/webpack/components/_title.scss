@@ -1,3 +1,6 @@
-.cmp-title {}
+.cmp-title {
+    margin:12px;
+    overflow: auto; // Prevents the browser-default margin-block rules from creating margin outside the parent div (eg: container)
+}
 .cmp-title__text {}
 .cmp-title__link {}

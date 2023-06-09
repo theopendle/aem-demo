@@ -1,1 +1,33 @@
-.cmp-container {}
+// Style: Row
+.demo-container--row {
+    .cmp-container {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+}
+
+.demo-container--grey {
+    background: grey;
+}
+
+.demo-container--navy {
+    background: navy;
+}
+
+// Style: Vertically center children
+.demo-container--vertically-centered {
+
+    // Use flexbox to align the items of the container's AEM grid vertically
+    & > .cmp-container>.aem-Grid {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+
+        // Force the newpar (droptarget) to return to the next flex row and occupy full width. This solves the issue
+        // whereby the droptarget has 0 width when using flexbox on the AEM grid.
+        .newpar {
+            flex-basis: 100%;
+        }
+    }
+}

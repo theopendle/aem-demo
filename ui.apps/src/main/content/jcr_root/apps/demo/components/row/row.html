@@ -1,0 +1,7 @@
+<sly data-sly-use.container="com.theopendle.core.models.Row">
+    <div class="demo-row"
+         style="background: ${container.backgroundColor @ context='styleString'}">
+        <sly data-sly-use.simpleTemplate="simple.html"
+             data-sly-call="${simpleTemplate.simple @ container=container}"></sly>
+    </div>
+</sly>
