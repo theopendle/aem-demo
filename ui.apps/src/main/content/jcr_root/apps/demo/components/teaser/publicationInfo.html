@@ -1,0 +1,7 @@
+<sly data-sly-template.pretitle="${@ teaser}">
+    <p class="cmp-teaser__publication-info">
+        <span class="cmp-teaser__publication-date"
+              data-sly-test.publicationDate="${teaser.publicationDate}">${publicationDate}</span>
+        <span class="cmp-teaser__read-time" data-sly-test.readTime="${teaser.readTimeInMinutes}">${readTime} min</span>
+    </p>
+</sly>

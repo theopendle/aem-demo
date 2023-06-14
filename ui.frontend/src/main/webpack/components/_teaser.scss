@@ -1,6 +1,26 @@
-.cmp-teaser {}
-.cmp-teaser__image {}
-.cmp-teaser__content {}
+.cmp-teaser {
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 1vmin;
+
+    .cmp-image {
+        margin: 0;
+    }
+
+    .cmp-teaser__image img {
+        order: 1;
+        border-radius: 1vmin;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .cmp-teaser__content {
+        order: 2;
+        padding: 12px;
+    }
+}
 .cmp-teaser__pretitle {}
 .cmp-teaser__title {}
 .cmp-teaser__title-link {}
