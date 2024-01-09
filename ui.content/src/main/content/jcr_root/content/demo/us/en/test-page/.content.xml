@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:lastModified="{Date}2024-01-09T09:58:33.576Z"
+        cq:lastModifiedBy="admin"
+        cq:template="/conf/demo/settings/wcm/templates/test-template"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Test page"
+        sling:resourceType="demo/components/page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="wcm/foundation/components/responsivegrid"
+            layout="responsiveGrid">
+            <container
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="wcm/foundation/components/responsivegrid"
+                layout="responsiveGrid"/>
+            <responsivegrid
+                jcr:created="{Date}2024-01-09T09:53:58.803Z"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2024-01-09T09:54:20.642Z"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="wcm/foundation/components/responsivegrid">
+                <responsivegrid
+                    jcr:created="{Date}2024-01-09T09:58:08.420Z"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2024-01-09T09:58:08.420Z"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="wcm/foundation/components/responsivegrid">
+                    <cq:responsive jcr:primaryType="nt:unstructured"/>
+                    <responsivegrid
+                        jcr:created="{Date}2024-01-09T09:58:11.079Z"
+                        jcr:createdBy="admin"
+                        jcr:lastModified="{Date}2024-01-09T09:58:11.079Z"
+                        jcr:lastModifiedBy="admin"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/foundation/components/responsivegrid">
+                        <cq:responsive jcr:primaryType="nt:unstructured"/>
+                        <title
+                            jcr:created="{Date}2024-01-09T09:58:13.624Z"
+                            jcr:createdBy="admin"
+                            jcr:lastModified="{Date}2024-01-09T09:58:13.624Z"
+                            jcr:lastModifiedBy="admin"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="wcm/foundation/components/title">
+                            <cq:responsive jcr:primaryType="nt:unstructured">
+                                <default
+                                    jcr:primaryType="nt:unstructured"
+                                    offset="0"
+                                    width="6"/>
+                            </cq:responsive>
+                        </title>
+                    </responsivegrid>
+                </responsivegrid>
+            </responsivegrid>
+        </root>
+    </jcr:content>
+</jcr:root>
