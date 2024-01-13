@@ -1,4 +1,4 @@
-package com.theopendle.core.workflow;
+package com.theopendle.core.workflow.queries;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.jackrabbit.api.security.user.Query;

@@ -1,4 +1,4 @@
-package com.theopendle.core.workflow;
+package com.theopendle.core.workflow.steps;
 
 import com.adobe.granite.workflow.WorkflowException;
 import com.adobe.granite.workflow.WorkflowSession;
@@ -19,25 +19,26 @@ import org.osgi.service.component.annotations.Reference;
 import javax.jcr.RepositoryException;
 import java.util.Map;
 
+import static com.theopendle.core.workflow.WorkflowUtil.getWorkflowVariable;
+
 @Slf4j
 @Component(property = {
-        "process.label" + "=Clean up exclusion groups",
-        Constants.SERVICE_DESCRIPTION + "=Workflow step to clean up exclusion groups created earlier in the workflow",
+        "process.label" + "=Delete exclusion groups",
+        Constants.SERVICE_DESCRIPTION + "=Workflow step to delete exclusion groups created earlier in the workflow",
         Constants.SERVICE_VENDOR + "=Theo Pendle",
 })
-public class CleanUpExclusionGroups implements WorkflowProcess {
+public class DeleteExclusionGroups implements WorkflowProcess {
 
     @Reference
     private ResourceResolverFactory resourceResolverFactory;
 
     @Override
     public void execute(final WorkItem workItem, final WorkflowSession workflowSession, final MetaDataMap metaDataMap) throws WorkflowException {
-        final String exclusionGroupId = workItem.getWorkflowData().getMetaDataMap().get(CreateExclusionGroup.PN_EXCLUSION_GROUP_ID, String.class);
+        final String exclusionGroupId = getWorkflowVariable(workItem, CreateExclusionGroup.PN_EXCLUSION_GROUP_ID, String.class);
 
         if (exclusionGroupId == null) {
-            log.error("No exclusion group found in workflow metadata map via property <{}>",
-                    CreateExclusionGroup.PN_EXCLUSION_GROUP_ID);
-            return;
+            throw new WorkflowException(String.format("No exclusion group found in workflow metadata map via property <%s>",
+                    CreateExclusionGroup.PN_EXCLUSION_GROUP_ID));
         }
 
         try (final ResourceResolver resolver = resourceResolverFactory.getServiceResourceResolver(Map.of(
@@ -45,26 +46,24 @@ public class CleanUpExclusionGroups implements WorkflowProcess {
 
             final UserManager userManager = resolver.adaptTo(UserManager.class);
             if (userManager == null) {
-                log.error("Could not retrieve <{}>", UserManager.class);
-                return;
+                throw new WorkflowException(String.format("Could not retrieve <%s>", UserManager.class));
             }
 
             final Authorizable exclusionGroup = userManager.getAuthorizable(exclusionGroupId);
             if (exclusionGroup == null) {
-                log.error("Could not find exclusion group with ID <{}>", exclusionGroupId);
-                return;
+                throw new WorkflowException(String.format("Could not find exclusion group with ID <%s>", exclusionGroupId));
             }
 
             exclusionGroup.remove();
             resolver.commit();
-            log.debug("Deleted exclusion group <{}>", exclusionGroupId);
+            log.info("Deleted exclusion group <{}>", exclusionGroupId);
 
         } catch (final LoginException e) {
-            log.error("Could not log to service user.", e);
+            throw new WorkflowException("Could not log to service user.", e);
         } catch (final RepositoryException e) {
-            log.error("Unexpected error while fetching user and/group", e);
+            throw new WorkflowException("Unexpected error while fetching user and/group", e);
         } catch (final PersistenceException e) {
-            log.error("Unexpected error while saving exclusion group", e);
+            throw new WorkflowException("Unexpected error while saving exclusion group", e);
         }
     }
 }
