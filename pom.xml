@@ -47,6 +47,8 @@
 
         <module>ui.content</module>
 
+        <module>workflows</module>
+
     </modules>
 
     <properties>
