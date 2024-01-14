@@ -111,6 +111,9 @@ public class CreateExclusionGroup implements WorkflowProcess {
                         "workflowInstance", workItem.getWorkflow().getId(),
                         "includesGroups", String.join(",", groups),
                         "excludesUser", initiatorAuthorizable.getPrincipal().getName(),
+
+                        // Name the group after the users that it contains so that authors know who is eligible to approve
+                        // without needing access to the AEM user/group admin interfaces
                         "profile/givenName", userIds
                 ).entrySet()) {
                     exclusionGroup.setProperty(entry.getKey(), new StringValue(entry.getValue()));
@@ -121,8 +124,12 @@ public class CreateExclusionGroup implements WorkflowProcess {
                     exclusionGroup.addMember(user);
                 }
 
+                // Commit the creation of the exclusion group
                 resolver.commit();
+
+                // Store the group ID so it can easily be found later for deletion
                 setWorkflowVariable(workItem, PN_EXCLUSION_GROUP_ID, exclusionGroupId);
+
                 log.info("Created exclusion group with ID <{}>", exclusionGroupId);
 
             } catch (final LoginException e) {
