@@ -38,6 +38,7 @@ import static com.theopendle.core.workflow.WorkflowUtil.setWorkflowVariable;
 public class CreateExclusionGroup implements WorkflowProcess {
 
     public static final String USER_ID_ADMIN = "admin";
+    public static final String GROUP_ID_ADMIN = "administrators";
     public static final String PN_EXCLUSION_GROUP_ID = "exclusionGroupId";
     public static final String PN_GROUPS = "groups";
 
@@ -51,6 +52,7 @@ public class CreateExclusionGroup implements WorkflowProcess {
         // In case the initiator is the admin user, allow them to self-approve
         if (initiatorId.equals(USER_ID_ADMIN)) {
             log.warn("Initiator is admin. No exclusion group will be created.");
+            setWorkflowVariable(workItem, PN_EXCLUSION_GROUP_ID, GROUP_ID_ADMIN);
             return;
         }
 
