@@ -48,6 +48,7 @@ public class CreateExclusionGroup implements WorkflowProcess {
     public void execute(final WorkItem workItem, final WorkflowSession workflowSession, final MetaDataMap metaDataMap) throws WorkflowException {
         final String initiatorId = workItem.getWorkflow().getInitiator();
 
+        // In case the initiator is the admin user, allow them to self-approve
         if (initiatorId.equals(USER_ID_ADMIN)) {
             log.warn("Initiator is admin. No exclusion group will be created.");
             return;
