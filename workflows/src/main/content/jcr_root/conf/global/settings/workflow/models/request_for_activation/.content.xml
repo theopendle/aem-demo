@@ -1,143 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-    jcr:primaryType="cq:Page">
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2024-01-14T07:46:01.110Z"
-        cq:lastModifiedBy="admin"
-        cq:tags="[workflow:wcm]"
-        cq:template="/libs/cq/workflow/templates/model"
-        jcr:description="This is the default request for activation workflow"
-        jcr:primaryType="cq:PageContent"
-        jcr:title="Request for Activation"
-        sling:resourceType="cq/workflow/components/pages/model"
-        multiResourceSupport="true">
+            cq:lastModified="{Date}2024-01-14T07:46:01.110Z"
+            cq:lastModifiedBy="admin"
+            cq:tags="[workflow:wcm]"
+            cq:template="/libs/cq/workflow/templates/model"
+            jcr:description="This is the default request for activation workflow"
+            jcr:primaryType="cq:PageContent"
+            jcr:title="Request for Activation"
+            sling:resourceType="cq/workflow/components/pages/model"
+            multiResourceSupport="true">
         <flow
-            jcr:primaryType="nt:unstructured"
-            sling:resourceType="foundation/components/parsys">
-            <process_678498792
-                jcr:created="{Date}2024-01-14T07:11:18.420Z"
-                jcr:createdBy="admin"
-                jcr:lastModified="{Date}2024-01-14T07:12:33.256Z"
-                jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
-                jcr:title="Create exclusion group"
-                sling:resourceType="cq/workflow/components/model/process">
-                <metaData
+                sling:resourceType="foundation/components/parsys">
+            <process_678498792
+                    jcr:created="{Date}2024-01-14T07:11:18.420Z"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2024-01-14T07:12:33.256Z"
+                    jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
-                    PROCESS="com.theopendle.core.workflow.steps.CreateExclusionGroup"
-                    PROCESS_ARGS="groups=demo-author,demo-validator"
-                    PROCESS_AUTO_ADVANCE="true"/>
+                    jcr:title="Create exclusion group"
+                    sling:resourceType="cq/workflow/components/model/process">
+                <metaData
+                        jcr:primaryType="nt:unstructured"
+                        PROCESS="com.theopendle.core.workflow.steps.CreateExclusionGroup"
+                        PROCESS_ARGS="groups=hr"
+                        PROCESS_AUTO_ADVANCE="true"/>
             </process_678498792>
             <dynamic_participant
-                jcr:created="{Date}2024-01-14T07:13:34.919Z"
-                jcr:createdBy="admin"
-                jcr:lastModified="{Date}2024-01-14T07:15:23.491Z"
-                jcr:lastModifiedBy="admin"
-                jcr:primaryType="nt:unstructured"
-                jcr:title="Approve content"
-                sling:resourceType="cq/workflow/components/model/dynamic_participant">
-                <metaData
+                    jcr:created="{Date}2024-01-14T07:13:34.919Z"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2024-01-14T07:15:23.491Z"
+                    jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
-                    DO_NOTIFY="true"
-                    DYNAMIC_PARTICIPANT="com.theopendle.core.workflow.steps.ExclusionGroupParticipantStepChooser"/>
+                    jcr:title="Approve content"
+                    sling:resourceType="cq/workflow/components/model/dynamic_participant">
+                <metaData
+                        jcr:primaryType="nt:unstructured"
+                        DO_NOTIFY="true"
+                        DYNAMIC_PARTICIPANT="com.theopendle.core.workflow.steps.ExclusionGroupParticipantStepChooser"/>
             </dynamic_participant>
             <or
-                jcr:created="{Date}2024-01-14T07:12:55.871Z"
-                jcr:createdBy="admin"
-                jcr:lastModified="{Date}2024-01-14T07:12:55.871Z"
-                jcr:lastModifiedBy="admin"
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="cq/workflow/components/model/or"
-                branches="2"
-                orSplit="true">
-                <_x0031_
+                    jcr:created="{Date}2024-01-14T07:12:55.871Z"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2024-01-14T07:12:55.871Z"
+                    jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
-                    sling:resourceType="cq/flow/components/parsys">
-                    <noopprocess_copy
-                        jcr:created="{Date}2024-01-14T07:25:10.311Z"
-                        jcr:createdBy="admin"
-                        jcr:description="A no operation process"
-                        jcr:lastModified="{Date}2024-01-14T07:25:27.054Z"
-                        jcr:lastModifiedBy="admin"
+                    sling:resourceType="cq/workflow/components/model/or"
+                    branches="2"
+                    orSplit="true">
+                <_x0031_
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Approve"
-                        sling:resourceType="cq/workflow/components/workflow/noopprocess">
-                        <metaData
+                        sling:resourceType="cq/flow/components/parsys">
+                    <noopprocess_copy
+                            jcr:created="{Date}2024-01-14T07:25:10.311Z"
+                            jcr:createdBy="admin"
+                            jcr:description="A no operation process"
+                            jcr:lastModified="{Date}2024-01-14T07:25:27.054Z"
+                            jcr:lastModifiedBy="admin"
                             jcr:primaryType="nt:unstructured"
-                            PROCESS="/libs/workflow/scripts/noop.ecma"
-                            PROCESS_AUTO_ADVANCE="true"/>
+                            jcr:title="Approve"
+                            sling:resourceType="cq/workflow/components/workflow/noopprocess">
+                        <metaData
+                                jcr:primaryType="nt:unstructured"
+                                PROCESS="/libs/workflow/scripts/noop.ecma"
+                                PROCESS_AUTO_ADVANCE="true"/>
                     </noopprocess_copy>
                     <process_0
-                        jcr:created="{Date}2013-10-09T15:34:36.075+03:00"
-                        jcr:createdBy="admin"
-                        jcr:description="The Version to be activated/replicated is created"
-                        jcr:lastModified="{Date}2013-10-09T15:35:47.481+03:00"
-                        jcr:lastModifiedBy="admin"
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="Create Version"
-                        sling:resourceType="cq/workflow/components/model/process">
-                        <metaData
+                            jcr:created="{Date}2013-10-09T15:34:36.075+03:00"
+                            jcr:createdBy="admin"
+                            jcr:description="The Version to be activated/replicated is created"
+                            jcr:lastModified="{Date}2013-10-09T15:35:47.481+03:00"
+                            jcr:lastModifiedBy="admin"
                             jcr:primaryType="nt:unstructured"
-                            PROCESS="com.day.cq.wcm.workflow.process.CreateVersionProcess"
-                            PROCESS_AUTO_ADVANCE="true"/>
+                            jcr:title="Create Version"
+                            sling:resourceType="cq/workflow/components/model/process">
+                        <metaData
+                                jcr:primaryType="nt:unstructured"
+                                PROCESS="com.day.cq.wcm.workflow.process.CreateVersionProcess"
+                                PROCESS_AUTO_ADVANCE="true"/>
                     </process_0>
                     <participant_0
-                        jcr:created="{Date}2013-10-09T15:36:36.674+03:00"
-                        jcr:createdBy="admin"
-                        jcr:description="Waiting for activation until the scheduled time is reached"
-                        jcr:lastModified="{Date}2013-10-09T15:39:28.374+03:00"
-                        jcr:lastModifiedBy="admin"
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="Waiting for activation"
-                        sling:resourceType="cq/workflow/components/model/participant">
-                        <metaData
+                            jcr:created="{Date}2013-10-09T15:36:36.674+03:00"
+                            jcr:createdBy="admin"
+                            jcr:description="Waiting for activation until the scheduled time is reached"
+                            jcr:lastModified="{Date}2013-10-09T15:39:28.374+03:00"
+                            jcr:lastModifiedBy="admin"
                             jcr:primaryType="nt:unstructured"
-                            PARTICIPANT="administrators"
-                            timeoutHandler="com.day.cq.workflow.timeout.autoadvance.AbsoluteTimeAutoAdvancer"
-                            timeoutMillis="0"/>
+                            jcr:title="Waiting for activation"
+                            sling:resourceType="cq/workflow/components/model/participant">
+                        <metaData
+                                jcr:primaryType="nt:unstructured"
+                                PARTICIPANT="administrators"
+                                timeoutHandler="com.day.cq.workflow.timeout.autoadvance.AbsoluteTimeAutoAdvancer"
+                                timeoutMillis="0"/>
                     </participant_0>
                     <process
-                        jcr:description="Activates the page."
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="Activate Page"
-                        sling:resourceType="cq/workflow/components/model/process">
-                        <metaData
+                            jcr:description="Activates the page."
                             jcr:primaryType="nt:unstructured"
-                            PROCESS="com.day.cq.wcm.workflow.process.ActivatePageProcess"
-                            PROCESS_AUTO_ADVANCE="true"/>
+                            jcr:title="Activate Page"
+                            sling:resourceType="cq/workflow/components/model/process">
+                        <metaData
+                                jcr:primaryType="nt:unstructured"
+                                PROCESS="com.day.cq.wcm.workflow.process.ActivatePageProcess"
+                                PROCESS_AUTO_ADVANCE="true"/>
                     </process>
                 </_x0031_>
                 <_x0032_
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="cq/flow/components/parsys">
-                    <noopprocess
-                        jcr:created="{Date}2024-01-14T07:25:10.311Z"
-                        jcr:createdBy="admin"
-                        jcr:description="A no operation process"
-                        jcr:lastModified="{Date}2024-01-14T07:46:01.108Z"
-                        jcr:lastModifiedBy="admin"
                         jcr:primaryType="nt:unstructured"
-                        jcr:title="Reject"
-                        sling:resourceType="cq/workflow/components/workflow/noopprocess">
-                        <metaData
+                        sling:resourceType="cq/flow/components/parsys">
+                    <noopprocess
+                            jcr:created="{Date}2024-01-14T07:25:10.311Z"
+                            jcr:createdBy="admin"
+                            jcr:description="A no operation process"
+                            jcr:lastModified="{Date}2024-01-14T07:46:01.108Z"
+                            jcr:lastModifiedBy="admin"
                             jcr:primaryType="nt:unstructured"
-                            PROCESS="/libs/workflow/scripts/noop.ecma"
-                            PROCESS_AUTO_ADVANCE="true"/>
+                            jcr:title="Reject"
+                            sling:resourceType="cq/workflow/components/workflow/noopprocess">
+                        <metaData
+                                jcr:primaryType="nt:unstructured"
+                                PROCESS="/libs/workflow/scripts/noop.ecma"
+                                PROCESS_AUTO_ADVANCE="true"/>
                     </noopprocess>
                 </_x0032_>
             </or>
             <process_678498792_co
-                jcr:created="{Date}2024-01-14T07:11:18.420Z"
-                jcr:createdBy="admin"
-                jcr:lastModified="{Date}2024-01-14T07:12:20.053Z"
-                jcr:lastModifiedBy="admin"
-                jcr:primaryType="nt:unstructured"
-                jcr:title="Delete exclusion group"
-                sling:resourceType="cq/workflow/components/model/process">
-                <metaData
+                    jcr:created="{Date}2024-01-14T07:11:18.420Z"
+                    jcr:createdBy="admin"
+                    jcr:lastModified="{Date}2024-01-14T07:12:20.053Z"
+                    jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
-                    PROCESS="com.theopendle.core.workflow.steps.DeleteExclusionGroups"
-                    PROCESS_AUTO_ADVANCE="true"/>
+                    jcr:title="Delete exclusion group"
+                    sling:resourceType="cq/workflow/components/model/process">
+                <metaData
+                        jcr:primaryType="nt:unstructured"
+                        PROCESS="com.theopendle.core.workflow.steps.DeleteExclusionGroups"
+                        PROCESS_AUTO_ADVANCE="true"/>
             </process_678498792_co>
         </flow>
     </jcr:content>

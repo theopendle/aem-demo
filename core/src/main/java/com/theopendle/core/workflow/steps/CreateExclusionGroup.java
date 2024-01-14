@@ -6,6 +6,7 @@ import com.adobe.granite.workflow.exec.WorkItem;
 import com.adobe.granite.workflow.exec.WorkflowProcess;
 import com.adobe.granite.workflow.metadata.MetaDataMap;
 import com.theopendle.core.workflow.WorkflowUtil;
+import com.theopendle.core.workflow.queries.GroupWithId;
 import com.theopendle.core.workflow.queries.UsersOfGroup;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -85,11 +86,20 @@ public class CreateExclusionGroup implements WorkflowProcess {
 
                 // Find all users belonging to specified groups
                 final Set<Authorizable> users = groups.stream()
+
+                        // If the initiator is not a member of the group provided, then discard it
+                        .filter(groupId -> userInGroup(userManager, groupId, initiatorAuthorizable))
+
+                        // Get all members of the eligible groups
                         .flatMap(groupId -> getUsersOfGroup(userManager, groupId).stream())
+
+                        // Remove the initiator
                         .filter(user -> !user.equals(initiatorAuthorizable))
+
                         .collect(Collectors.toSet());
+
                 if (users.isEmpty()) {
-                    throw new WorkflowException(String.format("No other users found in groups <%s> except initiator <%s>", groups, initiatorAuthorizable.getPrincipal().getName()));
+                    throw new WorkflowException(String.format("No other users found in groups <%s> (initiator <%s>)", groups, initiatorAuthorizable.getPrincipal().getName()));
                 }
 
                 // Create exclusion group
@@ -144,6 +154,30 @@ public class CreateExclusionGroup implements WorkflowProcess {
 
         } catch (final Exception e) {
             throw new WorkflowException(String.format("Unexpected error while running <%s>", this.getClass()), e);
+        }
+    }
+
+    private boolean userInGroup(final UserManager userManager, final String groupId, final Authorizable userAuthorizable) {
+        try {
+            final GroupWithId groupWithId = new GroupWithId(groupId);
+            final Iterator<Authorizable> iterator = userManager.findAuthorizables(groupWithId);
+
+            if (!iterator.hasNext()) {
+                log.error("Group <{}> passed to workflow via argument <{}> does not exist", groupId, PN_GROUPS);
+                return false;
+            }
+
+            final Authorizable group = iterator.next();
+            if (!group.isGroup()) {
+                log.error("Principal <{}> passed to workflow via argument <{}> is not a group", groupId, PN_GROUPS);
+                return false;
+            }
+
+            return ((Group) group).isMember(userAuthorizable);
+
+        } catch (final RepositoryException e) {
+            log.error("Unexpected error while searching for Authorizables", e);
+            return false;
         }
     }
 

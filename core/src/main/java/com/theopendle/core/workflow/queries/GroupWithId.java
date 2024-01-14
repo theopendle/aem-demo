@@ -6,7 +6,7 @@ import org.apache.jackrabbit.api.security.user.Query;
 import org.apache.jackrabbit.api.security.user.QueryBuilder;
 
 @RequiredArgsConstructor
-public class GroupWithName implements Query {
+public class GroupWithId implements Query {
 
     private final String userName;
 

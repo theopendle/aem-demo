@@ -73,6 +73,12 @@
                         </embedded>
                         <embedded>
                             <groupId>com.theopendle</groupId>
+                            <artifactId>demo.workflows</artifactId>
+                            <type>zip</type>
+                            <target>/apps/demo-packages/content/install</target>
+                        </embedded>
+                        <embedded>
+                            <groupId>com.theopendle</groupId>
                             <artifactId>demo.ui.config</artifactId>
                             <type>zip</type>
                             <target>/apps/demo-packages/application/install</target>
@@ -193,6 +199,12 @@
         <dependency>
             <groupId>com.theopendle</groupId>
             <artifactId>demo.ui.content</artifactId>
+            <version>${project.version}</version>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>com.theopendle</groupId>
+            <artifactId>demo.workflows</artifactId>
             <version>${project.version}</version>
             <type>zip</type>
         </dependency>
